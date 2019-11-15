@@ -1,5 +1,3 @@
-import { checkToggledButton } from "../components/Navbar.js";
-
 window.load = addEventListeners()
 
 function addEventListeners() {
