@@ -5,10 +5,38 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="./styles/style.css">
   <title>Binary Butterfly App</title>
 </head>
 
 <body>
+  <div class="container"></div>
+  <nav class="nav" id="js-nav">
+    <form action="">
+      <input class="toggle-radio " type="radio" name="nav-toggle" id="nav-user-picks" checked>
+      <label class="nav-toggle-label " for="nav-user-picks">
+        Your Picks
+      </label>
+      <input class="toggle-radio" type="radio" name="nav-toggle" id="nav-user-results">
+      <label class="nav-toggle-label " for="nav-user-results">
+        Your results
+      </label>
+      <input class="toggle-radio " type="radio" name="nav-toggle" id="nav-user-leaderboard">
+      <label class="nav-toggle-label" for=" nav-user-leaderboard">
+        Leaderboards
+      </label>
+    </form>
+  </nav>
+  <header class="week-description">
+    <h2>Week 11</h2>
+    <h3 class="total-picks-made"><span>10</span>/<span>14</span> picks made</h3>
+  </header>
+  <div class="weekly-picks view-is-active">
+
+  </div>
+  <div class="user-results"></div>
+  <div class="leaderboards"></div>
+
 
   <script src="./main.js"></script>
 
