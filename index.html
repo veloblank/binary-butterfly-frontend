@@ -13,15 +13,15 @@
   <div class="container"></div>
   <nav class="nav" id="js-nav">
     <form action="">
-      <input class="toggle-radio " type="radio" name="nav-toggle" id="nav-user-picks" checked>
+      <input class="toggle-radio " type="radio" name="nav-toggle" value="weekly-picks" id="nav-user-picks" checked>
       <label class="nav-toggle-label " for="nav-user-picks">
         Your Picks
       </label>
-      <input class="toggle-radio" type="radio" name="nav-toggle" id="nav-user-results">
+      <input class="toggle-radio" type="radio" name="nav-toggle" value="user-results" id="nav-user-results">
       <label class="nav-toggle-label " for="nav-user-results">
         Your results
       </label>
-      <input class="toggle-radio " type="radio" name="nav-toggle" id="nav-user-leaderboard">
+      <input class="toggle-radio " type="radio" name="nav-toggle" value="leaderboards" id="nav-user-leaderboard">
       <label class="nav-toggle-label" for=" nav-user-leaderboard">
         Leaderboards
       </label>
@@ -31,11 +31,11 @@
     <h2>Week 11</h2>
     <h3 class="total-picks-made"><span>10</span>/<span>14</span> picks made</h3>
   </header>
-  <div class="weekly-picks view-is-active">
+  <div class="weekly-picks view-is-active" id="weekly-picks">
 
   </div>
-  <div class="user-results"></div>
-  <div class="leaderboards"></div>
+  <div class="user-results" id="user-results">User Results</div>
+  <div class="leaderboards" id="leaderboards">Leaderboards</div>
 
 
   <script src="../src/App.js" type="module"></script>
