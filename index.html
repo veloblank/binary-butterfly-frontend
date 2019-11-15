@@ -11,7 +11,7 @@
 
 <body>
   <div class="container"></div>
-  <nav class="nav" id="js-nav">
+  <nav class="nav" id="js-nav" data-view="weekly-picks">
     <form action="">
       <input class="toggle-radio " type="radio" name="nav-toggle" value="weekly-picks" id="nav-user-picks" checked>
       <label class="nav-toggle-label " for="nav-user-picks">
@@ -22,7 +22,7 @@
         Your results
       </label>
       <input class="toggle-radio " type="radio" name="nav-toggle" value="leaderboards" id="nav-user-leaderboard">
-      <label class="nav-toggle-label" for=" nav-user-leaderboard">
+      <label class="nav-toggle-label" for="nav-user-leaderboard">
         Leaderboards
       </label>
     </form>
@@ -31,11 +31,9 @@
     <h2>Week 11</h2>
     <h3 class="total-picks-made"><span>10</span>/<span>14</span> picks made</h3>
   </header>
-  <div class="weekly-picks view-is-active" id="weekly-picks">
-
-  </div>
-  <div class="user-results" id="user-results">User Results</div>
-  <div class="leaderboards" id="leaderboards">Leaderboards</div>
+  <div class="views view-is-active" id="weekly-picks">Weekly Picks</div>
+  <div class="views" id="user-results">User Results</div>
+  <div class="views" id="leaderboards">Leaderboards</div>
 
 
   <script src="../src/App.js" type="module"></script>
