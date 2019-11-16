@@ -14,3 +14,14 @@ function addEventListeners() {
     })
   }
 }
+
+let props = fetch('http://localhost:3000/api/v1/contest_weeks/1/contest_props')
+  .then(response => response.json())
+  .then(json => console.log(json))
+
+
+
+
+
+
+
