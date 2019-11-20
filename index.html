@@ -13,46 +13,54 @@
   <div class="container">
     <nav class="nav" id="js-nav" data-view="weekly-picks">
       <form action="">
-        <input class="toggle-radio " type="radio" name="nav-toggle" value="weekly-picks" id="nav-user-picks" checked>
+        <input class="toggle-radio " type="radio" name="nav-toggle" value="weekly-picks" id="nav-user-picks" checked />
         <label class="nav-toggle-label " for="nav-user-picks">
           Your Picks
         </label>
-        <input class="toggle-radio" type="radio" name="nav-toggle" value="user-results" id="nav-user-results">
+        <input class="toggle-radio" type="radio" name="nav-toggle" value="user-results" id="nav-user-results" />
         <label class="nav-toggle-label " for="nav-user-results">
           Your results
         </label>
-        <input class="toggle-radio " type="radio" name="nav-toggle" value="leaderboards" id="nav-user-leaderboard">
+        <input class="toggle-radio " type="radio" name="nav-toggle" value="leaderboards" id="nav-user-leaderboard" />
         <label class="nav-toggle-label" for="nav-user-leaderboard">
           Leaderboards
         </label>
       </form>
     </nav>
     <header class="week-description">
-      <h2>Week 11</h2>
+      <h2 class="week-number">Week 11</h2>
     </header>
     <div class="views view-is-active" id="weekly-picks" style="visibility: visible;">Weekly Picks</div>
     <div class="views" id="user-results" style="display:none;">User Results</div>
     <div class="views" id="leaderboards" style="display:none;">Leaderboards</div>
+  </div>
 
-    <div class="summary" style="display: flex">
-      <div class="summary-group" id="remaining-picks">
-        <h3 class="total-picks-made"><span>10</span>/<span>14</span> picks made</h3>
+  <div class="summary" style="display: flex">
+    <div class="summary-group" id="remaining-picks">
+      <h3 class="total-picks-made"><span>10</span>/<span>14</span> picks made</h3>
+    </div>
+    <div class="summary-group" id="user-score">
+      <div id="user-prior-week-points">
+        Your Week 10 points: <span>-55.0</span> points
       </div>
-      <div class="summary-group" id="user-score">
-        <div id="user-prior-week-points">
-          Your Week 10 points: <span>-55.0</span> points
-        </div>
-        <div id="user-total-points">
-          Your Total Points: <span id="js-total-points">235</span> points
-        </div>
-      </div>
-      <div class="summary-group" id="account-group">
-        <button class="sign-in-button">
-          Sign in to play!
-        </button>
+      <div id="user-total-points">
+        Your Total Points: <span id="js-total-points">235</span> points
       </div>
     </div>
+    <div class="summary-group" id="account-group">
+      <button class="sign-in-button">
+        Sign in to play!
+      </button>
+    </div>
   </div>
+
+  <div class="sign-in-modal">
+    <div class="modal-content">
+      <span class="modal-close-btn">&times;</span>
+      <p>I am the modal.</p>
+    </div>
+  </div>
+
   <script src="../src/App.js" type="module"></script>
 </body>
 
