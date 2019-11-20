@@ -40,13 +40,16 @@
 }
 
 .sign-in-button {
-  background-color: orangered;
+  background-color: rgb(226, 91, 41);
   color: white;
   font-weight: 600;
   font-size: 1.25em;
-  border: 2px solid black;
   margin: 10px;
   cursor: pointer;
+}
+
+button:hover {
+  background: rgb(37, 37, 37);
 }
 
 .summary {
