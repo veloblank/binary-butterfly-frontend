@@ -29,14 +29,31 @@
   </nav>
   <header class="week-description">
     <h2>Week 11</h2>
-    <h3 class="total-picks-made"><span>10</span>/<span>14</span> picks made</h3>
   </header>
   <div class="views view-is-active" id="weekly-picks" style="visibility: visible;">Weekly Picks</div>
   <div class="views" id="user-results" style="display:none;">User Results</div>
   <div class="views" id="leaderboards" style="display:none;">Leaderboards</div>
+  <div class="summary" style="display: flex">
+    <div class="summary-group" id="remaining-picks">
+      <h3 class="total-picks-made"><span>10</span>/<span>14</span> picks made</h3>
+
+    </div>
+    <div class="summary-group" id="user-score">
+      <div id="user-prior-week-points">
+        Your Week 10 points: <span>-55.0</span> points
+      </div>
+      <div id="user-total-points">
+        Your Total Points: <span id="js-total-points">235</span> points
+      </div>
+    </div>
+    <div class="summary-group" id="account-group">
+      <button class="sign-in-button">
+        Sign in to play!
+      </button>
+    </div>
 
 
-  <script src="../src/App.js" type="module"></script>
+    <script src="../src/App.js" type="module"></script>
 
 </body>
 

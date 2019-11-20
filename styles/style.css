@@ -1,12 +1,25 @@
+* {
+  box-sizing: border-box;
+}
+
+.container {
+  height: 100%;
+  width: 80%;
+}
+
 .toggle-radio {
   visibility: hidden;
   position: absolute;
 }
 
 .nav-toggle-label {
-  border: 1px solid black;
+  border: 3px solid black;
   margin: 2px;
   padding: 10px
+}
+
+.nav {
+  margin-top: 25px;
 }
 
 .header {
@@ -24,4 +37,25 @@
   vertical-align: baseline;
   margin: 0;
   padding: 0;
+}
+
+.sign-in-button {
+  background-color: orangered;
+  color: white;
+  font-weight: 600;
+  font-size: 1.25em;
+  border: 2px solid black;
+  margin: 10px;
+  cursor: pointer;
+}
+
+.summary {
+  border-top: 2px solid black;
+  position: fixed;
+  z-index: 99;
+  bottom: 0px;
+  text-align: center;
+  padding: 10px;
+  width: 100%;
+  justify-content: space-between;
 }
