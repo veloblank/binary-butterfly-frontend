@@ -11,9 +11,9 @@
 
 <body>
   <div class="container">
-    <nav class="nav" id="js-nav" data-view="weekly-picks">
+    <nav class="nav" id="js-nav" data-view="daily-picks">
       <form action="">
-        <input class="toggle-radio " type="radio" name="nav-toggle" value="weekly-picks" id="nav-user-picks" checked />
+        <input class="toggle-radio " type="radio" name="nav-toggle" value="daily-picks" id="nav-user-picks" checked />
         <label class="nav-toggle-label " for="nav-user-picks">
           Your Picks
         </label>
@@ -30,7 +30,12 @@
     <header class="week-description">
       <h2 class="week-number">Week 11</h2>
     </header>
-    <div class="views view-is-active" id="weekly-picks" style="visibility: visible;">Weekly Picks</div>
+    <h1>Daily Picks</h1>
+    <div class="views view-is-active" id="daily-picks" style="visibility: visible;">
+      <div id="picks">
+
+      </div>
+    </div>
     <div class="views" id="user-results" style="display:none;">User Results</div>
     <div class="views" id="leaderboards" style="display:none;">Leaderboards</div>
   </div>
