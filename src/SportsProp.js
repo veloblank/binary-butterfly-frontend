@@ -8,6 +8,22 @@ class SportsProp {
     this.start_time = obj.start_time;
     this.user_selection = 50;
   }
+
+  render() {
+    let propElement = document.createElement('div');
+    propElement.classList.add('sports-prop');
+    propElement.innerHTML =
+      `<h2>${this.title}</h2>
+      <div class="competitors">
+        <div class="away_team">
+          <p>${this.away_team}</p>
+        </div>
+        <div class="home_team">
+          <p>${this.home_team}</p>
+        </div>
+      </div>`;
+    document.getElementById('picks').appendChild(propElement);
+  }
 }
 
 export default SportsProp;

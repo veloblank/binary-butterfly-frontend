@@ -1,37 +1,29 @@
 import fetchSportsProps from './sportsPropsData.js';
 import SportsProp from './SportsProp.js';
+import Slider from './Slider.js';
 
 window.load = buildSportsProps();
 
 function buildSportsProps() {
   let prop;
+  let slider;
   fetchSportsProps()
     .then(json => {
       for (let obj of json) {
         prop = new SportsProp(obj);
-        let propElement = document.createElement('div');
-        propElement.classList.add('sports-prop');
-        propElement.innerHTML =
-          `<h2>${prop.title}</h2>
-          <div class="competitors">
-            <div class="away_team">
-              <p>${prop.away_team}</p>
-            </div>
-            <div class="home_team">
-              <p>${prop.home_team}</p>
-            </div>
-            </div>
-            <div class="slider" id="prop-${prop.id}-slider"
-              <form>
-                <input type="range" value="50" name="points" min="0" max="100">
-              </form>
-            </div>
-          `
-        let insertionNode = document.getElementById('picks');
-        console.log(propElement)
-        insertionNode.appendChild(propElement)
+        prop.render();
+        slider = new Slider(prop);
       }
     });
+}
+
+function addSliderListeners() {
+  let sliders = document.getElementsByClassName("slider-container");
+  let output = document.getElementById("output");
+  slider.oninput = function () {
+    console.log(this.value)
+    //output.innerHTML = this.value;
+  }
 }
 
 addEventListeners();
@@ -62,19 +54,20 @@ function addEventListeners() {
     }
   }
 
-  let radioButtons = document.querySelectorAll('input[type=radio][name="nav-toggle"]')
+  let radioButtons = document.querySelectorAll('input[type=radio][name="nav-toggle"]');
   for (let button of radioButtons) {
     button.addEventListener('click', function () {
-      this.parentNode.parentNode.attributes['data-view'] = this.value
-      let views = document.querySelectorAll('.views')
-      let view = document.getElementById(this.value)
+      this.parentNode.parentNode.attributes['data-view'] = this.value;
+      let views = document.querySelectorAll('.views');
+      let view = document.getElementById(this.value);
       views.forEach(div => {
-        div.style.display = "none"
+        div.style.display = "none";
       });
-      view.style.display = "block"
-    })
+      view.style.display = "block";
+    });
   }
 }
+
 
 
 
