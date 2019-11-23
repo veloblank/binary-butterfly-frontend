@@ -13,13 +13,15 @@ class SportsProp {
     let propElement = document.createElement('div');
     propElement.classList.add('sports-prop');
     propElement.innerHTML =
-      `<h2>${this.title}</h2>
+      `<div class="prop-title">
+        <p>${this.title}</p>
+      </div>
       <div class="competitors">
         <div class="away_team">
-          <p>${this.away_team}</p>
+          <p><strong>${this.away_team}</strong></p>
         </div>
         <div class="home_team">
-          <p>${this.home_team}</p>
+          <p><strong>${this.home_team}</strong></p>
         </div>
       </div>
       <div class="slidercontainer" id="slider-container-${this.id}">
