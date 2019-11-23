@@ -41,12 +41,32 @@
   padding: 0;
 }
 
+.sports-prop {
+  border: 5px solid black;
+  padding: 0 5px 25px;
+  margin: 10px 5px;
+  background-color: black;
+}
+
+.prop-title {
+  margin: 10px 0 0;
+  padding: 8px 4px;
+  background-color: #4cb5f5;
+  font-family: 'Rubik', Calibri, 'Trebuchet MS', sans-serif;
+  font-size: 21px;
+  font-weight: 500;
+}
+
 .competitors {
-  margin: 15px;
+  margin-bottom: 20px;
   text-align: center;
+  font-size: 18px;
   display: flex;
   justify-content: space-around;
+  background-color: #b7b8b6
 }
+
+
 
 .home_team .away_team {
   padding: 5px;
@@ -54,13 +74,17 @@
 }
 
 .slidecontainer {
-  width: 60%;
+  margin-bottom: 10px;
+  width: 65%;
   margin: auto;
 }
 
 .slider-values {
   display: flex;
   justify-content: space-evenly;
+  font-size: 18px;
+  font-weight: 550;
+  color: white;
 }
 
 .slider {
@@ -68,7 +92,7 @@
   width: 75%;
   height: 15px;
   border-radius: 5px;
-  background: #d3d3d3;
+  background: #f0ecec;
   outline: none;
   opacity: 0.7;
   -webkit-transition: .2s;
@@ -81,8 +105,9 @@
   appearance: none;
   width: 30px;
   height: 30px;
-  background: rgb(0, 0, 0);
+  background: rgb(255, 0, 0);
   cursor: pointer;
+  border: 3px solid white;
 }
 
 .slider:hover {
