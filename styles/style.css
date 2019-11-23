@@ -2,6 +2,13 @@
   box-sizing: border-box;
 }
 
+.container {
+  margin: auto;
+  width: 80%;
+  text-align: center;
+  border: 2px solid black;
+}
+
 .toggle-radio {
   visibility: hidden;
   position: absolute;
@@ -48,11 +55,11 @@ button:hover {
 }
 
 .summary {
+  text-align: center;
   border-top: 2px solid black;
   position: fixed;
   z-index: 99;
   bottom: 0px;
-  text-align: center;
   padding: 10px;
   width: 100%;
   justify-content: space-between;
