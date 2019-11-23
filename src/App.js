@@ -1,4 +1,40 @@
-window.load = addEventListeners()
+import fetchSportsProps from './sportsPropsData.js';
+import SportsProp from './SportsProp.js';
+
+window.load = buildSportsProps();
+
+function buildSportsProps() {
+  let prop;
+  fetchSportsProps()
+    .then(json => {
+      for (let obj of json) {
+        prop = new SportsProp(obj);
+        let propElement = document.createElement('div');
+        propElement.classList.add('sports-prop');
+        propElement.innerHTML =
+          `<h2>${prop.title}</h2>
+          <div class="competitors">
+            <div class="away_team">
+              <p>${prop.away_team}</p>
+            </div>
+            <div class="home_team">
+              <p>${prop.home_team}</p>
+            </div>
+            </div>
+            <div class="slider" id="prop-${prop.id}-slider"
+              <form>
+                <input type="range" value="50" name="points" min="0" max="100">
+              </form>
+            </div>
+          `
+        let insertionNode = document.getElementById('picks');
+        console.log(propElement)
+        insertionNode.appendChild(propElement)
+      }
+    });
+}
+
+addEventListeners();
 
 function addEventListeners() {
   let modal = document.getElementById('signin-modal');
@@ -40,9 +76,7 @@ function addEventListeners() {
   }
 }
 
-let props = fetch('http://localhost:3000/api/v1/contest_weeks/1/contest_props')
-  .then(response => response.json())
-  .then(json => console.log(json))
+
 
 
 

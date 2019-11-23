@@ -41,6 +41,19 @@
   padding: 0;
 }
 
+.competitors {
+  text-align: center;
+  display: flex;
+  justify-content: space-around;
+}
+
+.home_team .away_team {
+  padding: 5px;
+  display: inline;
+}
+
+
+
 .sign-in-button {
   background-color: rgb(226, 91, 41);
   color: white;
@@ -55,6 +68,7 @@ button:hover {
 }
 
 .summary {
+  background-color: bisque;
   text-align: center;
   border-top: 2px solid black;
   position: fixed;
