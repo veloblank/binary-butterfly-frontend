@@ -1,5 +1,5 @@
 const fetchSportsProps = () => {
-  return fetch('http://localhost:3000/api/v1/contest_weeks/1/contest_props')
+  return fetch('http://localhost:3000/api/v1/contest_weeks/2/contest_props')
     .then(response => response.json());
 }
 

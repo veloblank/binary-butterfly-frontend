@@ -24,11 +24,15 @@ function addEventListeners() {
   let sliders = document.getElementsByClassName('slider');
   for (let slider of sliders) {
     slider.addEventListener('change', e => {
-      console.log(e.target.value);
+      if (e.target.value > 0) {
+        document.getElementById(`prop-${e.target.dataset.id}-home-values`).innerHTML = e.target.value;
+        document.getElementById(`prop-${e.target.dataset.id}-away-values`).innerHTML = Math.round((e.target.value * 30) / 10) * (-1)
+      } else {
+        document.getElementById(`prop-${e.target.dataset.id}-home-values`).innerHTML = ((e.target.value * 30) / 10) * (-1);
+        document.getElementById(`prop-${e.target.dataset.id}-away-values`).innerHTML = Math.abs(e.target.value);
+      }
     });
-  };
-
-
+  }
 
   let modal = document.getElementById('signin-modal');
   let openModalBtn = document.getElementById('signin-button');

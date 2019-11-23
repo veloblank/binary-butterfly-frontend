@@ -58,9 +58,14 @@
   margin: auto;
 }
 
+.slider-values {
+  display: flex;
+  justify-content: space-evenly;
+}
+
 .slider {
   -webkit-appearance: none;
-  width: 100%;
+  width: 75%;
   height: 15px;
   border-radius: 5px;
   background: #d3d3d3;
