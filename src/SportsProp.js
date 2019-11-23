@@ -21,6 +21,9 @@ class SportsProp {
         <div class="home_team">
           <p>${this.home_team}</p>
         </div>
+      </div>
+      <div class="slidercontainer" id="slider-container-${this.id}">
+        
       </div>`;
     document.getElementById('picks').appendChild(propElement);
   }
