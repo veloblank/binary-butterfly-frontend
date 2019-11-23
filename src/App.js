@@ -2,33 +2,34 @@ import fetchSportsProps from './sportsPropsData.js';
 import SportsProp from './SportsProp.js';
 import Slider from './Slider.js';
 
-window.load = buildSportsProps();
+window.onload = buildSportsProps;
 
 function buildSportsProps() {
-  let prop;
-  let slider;
   fetchSportsProps()
-    .then(json => {
-      for (let obj of json) {
-        prop = new SportsProp(obj);
+    .then(arr => {
+      for (let obj of arr) {
+        let prop = new SportsProp(obj);
         prop.render();
-        slider = new Slider(prop);
+        let slider = new Slider(prop);
+        slider.render();
       }
     });
-}
+};
 
-function addSliderListeners() {
-  let sliders = document.getElementsByClassName("slider-container");
-  let output = document.getElementById("output");
-  slider.oninput = function () {
-    console.log(this.value)
-    //output.innerHTML = this.value;
-  }
-}
-
-addEventListeners();
+setTimeout(() => {
+  addEventListeners();
+}, 300);
 
 function addEventListeners() {
+  let sliders = document.getElementsByClassName('slider');
+  for (let slider of sliders) {
+    slider.addEventListener('change', e => {
+      console.log(e.target.value);
+    });
+  };
+
+
+
   let modal = document.getElementById('signin-modal');
   let openModalBtn = document.getElementById('signin-button');
   let closeModalBtn = document.getElementById('modal-close-btn');
@@ -67,13 +68,3 @@ function addEventListeners() {
     });
   }
 }
-
-
-
-
-
-
-
-
-
-
