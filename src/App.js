@@ -23,7 +23,7 @@ setTimeout(() => {
 function addEventListeners() {
   let sliders = document.getElementsByClassName('slider');
   for (let slider of sliders) {
-    slider.addEventListener('change', e => {
+    slider.addEventListener('input', e => {
       if (e.target.value > 0) {
         document.getElementById(`prop-${e.target.dataset.id}-home-values`).innerHTML = e.target.value * 10 / 10;
         document.getElementById(`prop-${e.target.dataset.id}-away-values`).innerHTML = Math.round((e.target.value * 30) / 10) * (-1);
