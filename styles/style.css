@@ -52,6 +52,10 @@
   background-color: black;
 }
 
+#helper {
+  display: none;
+}
+
 .prop-title {
   margin: 10px 0 0;
   padding: 8px 4px;

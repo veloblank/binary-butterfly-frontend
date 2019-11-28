@@ -26,7 +26,7 @@ class App {
     //sets delay so Props can be built and rendered before Listeners are added
     setInterval(() => {
       this.addEventListeners();
-    }, 1500);
+    }, 500);
   }
 
   addEventListeners() {
@@ -43,6 +43,11 @@ class App {
           document.getElementById(`prop-${e.target.dataset.id}-home-values`).innerHTML = Math.round((e.target.value * 30) / 10);
         }
       });
+      slider.addEventListener('mouseup', () => {
+        this.displayPoints();
+
+        //TODO: MAKE FETCH POST REQUEST THAT UPDATES USER ACCOUNT
+      })
     }
 
 
@@ -58,6 +63,22 @@ class App {
         view.style.display = "block";
       });
     }
+  }
+
+  displayPoints() {
+    let sliders = [...document.getElementsByClassName('slider')];
+    let numOfPicksMade;
+    let numOfProps = sliders.length;
+    let filtered = sliders.filter(slider => {
+      return (parseFloat(slider.value) != 0)
+    })
+    numOfPicksMade = filtered.length;
+    document.querySelector('#daily-total-picks-made').innerHTML = numOfPicksMade;
+    document.querySelector('#helper').style.display = "inline";
+    document.querySelector('#daily-total-picks').innerHTML = numOfProps;
+
+
+
   }
 }
 export default App;
