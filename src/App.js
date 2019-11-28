@@ -1,4 +1,4 @@
-import Modal from './Modal.js'
+import Modal from './Modal.js';
 import SportsProp from './SportsProp.js';
 import Slider from './Slider.js';
 import fetchSportsProps from './sportsPropsData.js';
@@ -21,7 +21,7 @@ class App {
           let slider = new Slider(obj);
           slider.render();
         }
-      })
+      });
     this.addEventListeners();
   }
 

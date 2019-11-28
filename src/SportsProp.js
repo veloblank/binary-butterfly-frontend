@@ -29,8 +29,7 @@ class SportsProp {
       </div>
       <div class="lock-time">
         Lock Time: ${this.start_time}
-      </div>
-  `
+      </div>`;
 
     document.getElementById('picks').appendChild(propElement);
   }

@@ -1,5 +1,5 @@
 function fetchSportsProps() {
-  return fetch('http://localhost:3000/api/v1/contest_weeks/2/contest_props')
+  return fetch('http://localhost:3000/api/v1/current')
     .then(response => response.json());
 }
 
