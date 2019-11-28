@@ -22,7 +22,11 @@ class App {
           slider.render();
         }
       });
-    this.addEventListeners();
+
+    //sets delay so Props can be built and rendered before Listeners are added
+    setInterval(() => {
+      this.addEventListeners();
+    }, 1500);
   }
 
   addEventListeners() {
