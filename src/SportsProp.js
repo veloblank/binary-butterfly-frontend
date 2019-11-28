@@ -26,7 +26,12 @@ class SportsProp {
       </div>
       <div class="slidercontainer" id="slider-container-${this.id}">
         
-      </div>`;
+      </div>
+      <div class="lock-time">
+        Lock Time: ${this.start_time}
+      </div>
+  `
+
     document.getElementById('picks').appendChild(propElement);
   }
 }

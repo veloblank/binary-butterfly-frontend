@@ -41,6 +41,10 @@
   padding: 0;
 }
 
+.lock-time {
+  color: white;
+}
+
 .sports-prop {
   border: 5px solid black;
   padding: 0 5px 25px;
