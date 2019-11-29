@@ -76,9 +76,6 @@ class App {
     document.querySelector('#daily-total-picks-made').innerHTML = numOfPicksMade;
     document.querySelector('#helper').style.display = "inline";
     document.querySelector('#daily-total-picks').innerHTML = numOfProps;
-
-
-
   }
 }
 export default App;
