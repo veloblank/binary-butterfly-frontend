@@ -1,7 +1,7 @@
 class SportsProp {
   constructor(obj) {
     this.id = obj.id;
-    this.week_id = obj.contest_week_id;
+    this.week_id = obj.contest_board_id;
     this.title = obj.title;
     this.away_team = obj.away_team;
     this.home_team = obj.home_team;
