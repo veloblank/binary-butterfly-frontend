@@ -77,6 +77,13 @@
           <label for="username">Username</label><br>
           <input type="text" name="username"><br>
 
+          <div class="field-errors">
+            <!--The server encountered the following errors:-->
+            <div>
+              <ul id="account-errors"></ul>
+            </div>
+          </div>
+
           <input type="submit" value="Create Account">
         </form>
       </div>
@@ -102,8 +109,15 @@
 
       fetch('http://localhost:3050/api/v1/users', configObj)
         .then(response => response.json())
-        .then(json => console.log(json))
-        .catch(error => console.log(error.message));
+        .then(json => {
+          if (json.message.status !== 201) {
+            let parent = document.getElementById('account-errors')
+            json.message.forEach(error => parent.innerHTML += (`<li>${error}</li>`))
+          }
+        })
+        .catch(error => {
+          console.log(error)
+        });
     }
   </script>
 </body>

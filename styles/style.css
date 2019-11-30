@@ -182,6 +182,13 @@ button:hover {
   cursor: pointer;
 }
 
+.field-errors {
+  margin: 5px;
+  background-color: gold;
+  padding: 5px;
+
+}
+
 @keyframes modalopen {
   from {
     opacity: 0
