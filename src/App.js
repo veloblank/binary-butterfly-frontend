@@ -46,7 +46,7 @@ class App {
         this.displayPoints();
 
         //TODO: MAKE FETCH POST REQUEST THAT UPDATES USER ACCOUNT
-      })
+      });
     }
 
 
@@ -69,8 +69,8 @@ class App {
     let numOfPicksMade;
     let numOfProps = sliders.length;
     let filtered = sliders.filter(slider => {
-      return (parseFloat(slider.value) != 0)
-    })
+      return (parseFloat(slider.value) != 0);
+    });
     numOfPicksMade = filtered.length;
     document.querySelector('#daily-total-picks-made').innerHTML = numOfPicksMade;
     document.querySelector('#helper').style.display = "inline";

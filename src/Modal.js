@@ -10,6 +10,10 @@ class Modal {
     openModalBtn.addEventListener('click', openModal);
     closeModalBtn.addEventListener('click', closeModal);
 
+    document.getElementById("create-account-form").addEventListener("submit", (e) => {
+      e.preventDefault();
+    });
+
     //Outside 'click' event of modal
     window.addEventListener('click', clickOutside);
 

@@ -69,13 +69,15 @@
         <img src="./images/google-icon.svg" alt="">
         <p><a href="#">Sign in with Google</a></p>
       </div>
-      <div class="form" id="signin-form">
-        <form onsubmit="return handleSignIn(event)">
+      <div class="form">
+        <form onsubmit="handleCreateAccount(this)" id="create-account-form">
+          <label for="email">Email</label><br>
+          <input type="email" name="email" autofocus=true><br>
+
           <label for="username">Username</label><br>
           <input type="text" name="username"><br>
-          <label for="username">Password</label><br>
-          <input type="password" name="password" placeholder="Password"><br>
-          <button type="submit">Create Account</button>
+
+          <input type="submit" value="Create Account">
         </form>
       </div>
     </div>
@@ -83,9 +85,25 @@
 
   <script src="../src/index.js" type="module"></script>
   <script>
-    function handleSignIn(e) {
-      e.preventDefault();
-      console.log(this)
+    function handleCreateAccount(form) {
+      let formData = {
+        email: form.elements[0].value,
+        username: form.elements[1].value
+      }
+
+      let configObj = {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Accept": "application/json"
+        },
+        body: JSON.stringify(formData)
+      };
+
+      fetch('http://localhost:3050/api/v1/users', configObj)
+        .then(response => response.json())
+        .then(json => console.log(json))
+        .catch(error => console.log(error.message));
     }
   </script>
 </body>
