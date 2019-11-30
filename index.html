@@ -69,10 +69,25 @@
         <img src="./images/google-icon.svg" alt="">
         <p><a href="#">Sign in with Google</a></p>
       </div>
+      <div class="form" id="signin-form">
+        <form onsubmit="return handleSignIn(event)">
+          <label for="username">Username</label><br>
+          <input type="text" name="username"><br>
+          <label for="username">Password</label><br>
+          <input type="password" name="password" placeholder="Password"><br>
+          <button type="submit">Create Account</button>
+        </form>
+      </div>
     </div>
   </div>
 
   <script src="../src/index.js" type="module"></script>
+  <script>
+    function handleSignIn(e) {
+      e.preventDefault();
+      console.log(this)
+    }
+  </script>
 </body>
 
 </html>

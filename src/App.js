@@ -3,7 +3,6 @@ import SportsProp from './SportsProp.js';
 import Slider from './Slider.js';
 import fetchSportsProps from './sportsPropsData.js';
 
-
 class App {
   constructor() {
     this.modal = new Modal();
