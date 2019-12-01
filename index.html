@@ -68,24 +68,24 @@
       <div class="google-signin" style="text-align: center">
         <img src="./images/google-icon.svg" alt="">
         <p><a href="#">Sign in with Google</a></p>
-      </div>
-      <div class="form">
-        <form onsubmit="handleCreateAccount(this)" id="create-account-form">
-          <label for="email">Email</label><br>
-          <input type="email" name="email" autofocus=true><br>
+        <div class="form">
+          <form onsubmit="handleCreateAccount(this)" id="create-account-form">
+            <label for="email">Email</label><br>
+            <input type="email" name="email" autofocus=true><br>
 
-          <label for="username">Username</label><br>
-          <input type="text" name="username"><br>
+            <label for="username">Username</label><br>
+            <input type="text" name="username"><br>
 
-          <div class="field-errors">
-            <!--The server encountered the following errors:-->
-            <div>
-              <ul id="account-errors"></ul>
+            <div class="errors-container">
+              <!--The server encountered the following errors:-->
+              <div class="error-field ">
+                <ul id="account-errors"></ul>
+              </div>
+              <input id="create-account-btn" type="submit" value="Create Account">
             </div>
-          </div>
 
-          <input type="submit" value="Create Account">
-        </form>
+          </form>
+        </div>
       </div>
     </div>
   </div>

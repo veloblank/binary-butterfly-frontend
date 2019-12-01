@@ -175,6 +175,12 @@ button:hover {
   font-size: 30px;
 }
 
+#create-account-btn {
+  padding: 3px;
+  margin: auto;
+
+}
+
 .modal-close-btn:hover,
 .close-btn-focus {
   color: black;
@@ -182,7 +188,7 @@ button:hover {
   cursor: pointer;
 }
 
-.field-errors {
+.errors-container {
   margin: 5px;
   background-color: gold;
   padding: 5px;
