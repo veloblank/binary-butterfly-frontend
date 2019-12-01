@@ -30,19 +30,36 @@ class App {
   }
 
   addEventListeners(app) {
+    let signInContainer = document.getElementById('signin-container');
+    let signInBtn = document.getElementById('signin-button');
     let signOutBtn = document.getElementById('signout-button');
+    let createActBtn = document.getElementById('create-account-button');
+
+    signInBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      //TODO: LAUNCH SIGNIN MODAL
+      this.state.user = "User"
+      signOutBtn.style.display = "block";
+      createActBtn.style.display = "none";
+      signInBtn.style.display = "none";
+
+    })
+
     signOutBtn.addEventListener('click', (e) => {
       e.preventDefault();
       this.state.user = "";
 
     })
-    let createActBtn = document.getElementById('create-account-button');
     if (this.state.user) {
       signOutBtn.style.display = "block";
       createActBtn.style.display = "none";
+      signInBtn.style.display = "none";
+
     } else {
       signOutBtn.style.display = "none";
       createActBtn.style.display = "block";
+      signInBtn.style.display = "inline";
+
     }
 
     DomEventListeners.addModalListeners();
