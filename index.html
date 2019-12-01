@@ -78,9 +78,7 @@
 
             <div class="errors-container">
               <!--The server encountered the following errors:-->
-              <div class="error-field ">
-                <ul id="account-errors"></ul>
-              </div>
+              <div class="error-field" id="account-errors"></div>
               <input id="create-account-btn" type="submit" value="Create Account">
             </div>
 
@@ -110,9 +108,15 @@
       fetch('http://localhost:3050/api/v1/users', configObj)
         .then(response => response.json())
         .then(json => {
-          if (json.message.status !== 201) {
-            let parent = document.getElementById('account-errors')
-            json.message.forEach(error => parent.innerHTML += (`<li>${error}</li>`))
+          if (json.message.errors && json.message.status !== 201) {
+            let parent = document.createElement('ul');
+            let li = "";
+            json.message.errors.forEach(error => {
+              document.getElementById('account-errors').innerHTML = "";
+              li += `<li>${error}</li>`;
+              parent.innerHTML = li;
+            })
+            document.getElementById('account-errors').append(parent);
           }
         })
         .catch(error => {
