@@ -62,7 +62,7 @@ class App {
 
     }
 
-    DomEventListeners.addModalListeners();
+    DomEventListeners.createAccountModalListeners();
 
     //controls form submission in modal
     document.getElementById("create-account-form").addEventListener("submit", (e) => {

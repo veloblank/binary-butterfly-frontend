@@ -4,7 +4,7 @@ function handleOnLogout(app) {
   this.state.user = "";
 }
 
-function addModalListeners() {
+function createAccountModalListeners() {
   let modal = document.getElementById('create-account-modal');
   let openModalBtn = document.getElementById('create-account-button');
   let closeModalBtn = document.getElementById('modal-close-btn');
@@ -28,6 +28,7 @@ function addModalListeners() {
     }
   }
 }
+
 
 function onFormSubmission(app) {
   let submittedForm = document.getElementById('create-account-form');
@@ -60,19 +61,19 @@ function onFormSubmission(app) {
         });
       } else {
         app.state.user = data.user;
-        closeModal();
+        exitModal();
       }
     });
 
 }
 
-function closeModal() {
+function exitModal() {
   let modal = document.getElementById('create-account-modal')
   modal.style.display = "none";
 }
 
 
 export {
-  addModalListeners,
+  createAccountModalListeners,
   onFormSubmission
 }
