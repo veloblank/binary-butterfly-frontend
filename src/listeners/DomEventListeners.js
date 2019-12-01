@@ -30,7 +30,7 @@ function createAccountModalListeners() {
 }
 
 
-function onFormSubmission(app) {
+function onCreateAccountFormSubmission(app) {
   let submittedForm = document.getElementById('create-account-form');
 
   let formData = {
@@ -75,5 +75,5 @@ function exitModal() {
 
 export {
   createAccountModalListeners,
-  onFormSubmission
+  onCreateAccountFormSubmission
 }
