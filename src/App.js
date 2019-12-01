@@ -1,14 +1,16 @@
+import fetchSportsProps from './fetchRequests.js';
+import * as eventHandlers from './eventHandlers.js';
 import SportsProp from './SportsProp.js';
 import Slider from './Slider.js';
-import fetchSportsProps from './sportsPropsData.js';
 import * as DomEventListeners from './listeners/DomEventListeners.js';
 
 class App {
   constructor() {
-    this.state = {
-      user: ""
-    };
     console.log("Application Starting...");
+    this.state = {
+      user: "",
+      props: ""
+    };
     this.buildProps();
   }
 
@@ -37,19 +39,14 @@ class App {
 
     signInBtn.addEventListener('click', (e) => {
       e.preventDefault();
-      //TODO: LAUNCH SIGNIN MODAL
-      this.state.user = "User"
-      signOutBtn.style.display = "block";
-      createActBtn.style.display = "none";
-      signInBtn.style.display = "none";
-
-    })
+      eventHandlers.onSignInClick(app);
+    });
 
     signOutBtn.addEventListener('click', (e) => {
       e.preventDefault();
-      this.state.user = "";
+      eventHandlers.onSignOutClick(app);
+    });
 
-    })
     if (this.state.user) {
       signOutBtn.style.display = "block";
       createActBtn.style.display = "none";
@@ -59,7 +56,6 @@ class App {
       signOutBtn.style.display = "none";
       createActBtn.style.display = "block";
       signInBtn.style.display = "inline";
-
     }
 
     DomEventListeners.createAccountModalListeners();
@@ -67,7 +63,7 @@ class App {
     //controls form submission in modal
     document.getElementById("create-account-form").addEventListener("submit", (e) => {
       e.preventDefault();
-      DomEventListeners.onFormSubmission(this);
+      DomEventListeners.onCreateAccountFormSubmission(this);
     });
 
     let sliders = document.getElementsByClassName('slider');
