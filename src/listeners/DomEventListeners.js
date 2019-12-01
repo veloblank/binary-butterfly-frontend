@@ -1,9 +1,3 @@
-function accountListeners() { }
-
-function handleOnLogout(app) {
-  this.state.user = "";
-}
-
 function createAccountModalListeners() {
   let modal = document.getElementById('create-account-modal');
   let openModalBtn = document.getElementById('create-account-button');
