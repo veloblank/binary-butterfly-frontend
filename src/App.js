@@ -1,11 +1,10 @@
-import Modal from './Modal.js';
 import SportsProp from './SportsProp.js';
 import Slider from './Slider.js';
 import fetchSportsProps from './sportsPropsData.js';
+import * as modalEventListeners from './listeners/DOMeventListeners.js';
 
 class App {
   constructor() {
-    this.modal = new Modal();
     this.state = {};
     console.log("Application Starting...");
     this.buildProps();
@@ -29,7 +28,12 @@ class App {
   }
 
   addEventListeners() {
-    this.modal.addModalListeners();
+    modalEventListeners.addModalListeners();
+
+    document.getElementById("create-account-form").addEventListener("submit", (e) => {
+      e.preventDefault();
+      modalEventListeners.onFormSubmission();
+    });
 
     let sliders = document.getElementsByClassName('slider');
     for (let slider of sliders) {
