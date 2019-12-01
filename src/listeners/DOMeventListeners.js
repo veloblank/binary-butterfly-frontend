@@ -23,7 +23,7 @@ function addModalListeners() {
   }
 }
 
-function onFormSubmission() {
+function onFormSubmission(app) {
   let submittedForm = document.getElementById('create-account-form');
 
   let formData = {
@@ -42,21 +42,27 @@ function onFormSubmission() {
 
   fetch('http://localhost:3050/api/v1/users', configObj)
     .then(response => response.json())
-    .then(json => {
-      if (json.message.errors && json.message.status !== 201) {
+    .then(data => {
+      if (data.status !== 201) {
         let parent = document.createElement('ul');
         let li = "";
-        json.message.errors.forEach(error => {
+        data.message.errors.forEach(error => {
           document.getElementById('account-errors').innerHTML = "";
           li += `<li>${error}</li>`;
           parent.innerHTML = li;
-        })
-        document.getElementById('account-errors').append(parent);
+          return document.getElementById('account-errors').append(parent);
+        });
+      } else {
+        app.state.user = data.user;
+        closeModal();
       }
-    })
-    .catch(error => {
-      console.log(error)
     });
+
+}
+
+function closeModal() {
+  let modal = document.getElementById('signin-modal')
+  modal.style.display = "none";
 }
 
 

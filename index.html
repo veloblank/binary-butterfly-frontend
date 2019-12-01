@@ -62,7 +62,7 @@
     </div>
   </div>
 
-  <div class="sign-in-modal" id="signin-modal">
+  <div class="modal-container" id="signin-modal">
     <div class="modal-content">
       <span class="modal-close-btn" id="modal-close-btn">&times;</span>
       <div class="google-signin" style="text-align: center">
@@ -77,10 +77,10 @@
             <input type="text" name="username"><br>
 
             <div class="errors-container">
-              <!--The server encountered the following errors:-->
               <div class="error-field" id="account-errors"></div>
               <input id="create-account-btn" type="submit" value="Create Account">
             </div>
+
           </form>
         </div>
       </div>
@@ -88,41 +88,6 @@
   </div>
 
   <script src="../src/index.js" type="module"></script>
-  <script>
-    function handleCreateAccount(form) {
-      let formData = {
-        email: form.elements[0].value,
-        username: form.elements[1].value
-      }
-
-      let configObj = {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          "Accept": "application/json"
-        },
-        body: JSON.stringify(formData)
-      };
-
-      fetch('http://localhost:3050/api/v1/users', configObj)
-        .then(response => response.json())
-        .then(json => {
-          if (json.message.errors && json.message.status !== 201) {
-            let parent = document.createElement('ul');
-            let li = "";
-            json.message.errors.forEach(error => {
-              document.getElementById('account-errors').innerHTML = "";
-              li += `<li>${error}</li>`;
-              parent.innerHTML = li;
-            })
-            document.getElementById('account-errors').append(parent);
-          }
-        })
-        .catch(error => {
-          console.log(error)
-        });
-    }
-  </script>
 </body>
 
 </html>

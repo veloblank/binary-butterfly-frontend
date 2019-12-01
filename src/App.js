@@ -5,7 +5,9 @@ import * as modalEventListeners from './listeners/DOMeventListeners.js';
 
 class App {
   constructor() {
-    this.state = {};
+    this.state = {
+      user: ""
+    };
     console.log("Application Starting...");
     this.buildProps();
   }
@@ -30,9 +32,10 @@ class App {
   addEventListeners() {
     modalEventListeners.addModalListeners();
 
+    //controls form submission in modal
     document.getElementById("create-account-form").addEventListener("submit", (e) => {
       e.preventDefault();
-      modalEventListeners.onFormSubmission();
+      modalEventListeners.onFormSubmission(this);
     });
 
     let sliders = document.getElementsByClassName('slider');

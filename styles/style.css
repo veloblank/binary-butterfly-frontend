@@ -147,7 +147,7 @@ button:hover {
   justify-content: space-between;
 }
 
-.sign-in-modal {
+.modal-container {
   display: none;
   position: fixed;
   z-index: 1;
