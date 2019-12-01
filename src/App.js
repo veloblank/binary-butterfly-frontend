@@ -25,25 +25,26 @@ class App {
 
     //sets delay so Props can be built and rendered before Listeners are added
     setInterval(() => {
-      this.addEventListeners();
+      this.addEventListeners(this);
     }, 500);
   }
 
-  addEventListeners() {
+  addEventListeners(app) {
     let signOutBtn = document.getElementById('signout-button');
     signOutBtn.addEventListener('click', (e) => {
       e.preventDefault();
       this.state.user = "";
 
     })
-    let signInBtn = document.getElementById('signin-button');
+    let createActBtn = document.getElementById('create-account-button');
     if (this.state.user) {
       signOutBtn.style.display = "block";
-      signInBtn.style.display = "none";
+      createActBtn.style.display = "none";
     } else {
       signOutBtn.style.display = "none";
-      signInBtn.style.display = "block";
+      createActBtn.style.display = "block";
     }
+
     DomEventListeners.addModalListeners();
 
     //controls form submission in modal

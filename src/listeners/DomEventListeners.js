@@ -1,10 +1,12 @@
+function accountListeners() { }
+
 function handleOnLogout(app) {
   this.state.user = "";
 }
 
 function addModalListeners() {
-  let modal = document.getElementById('signin-modal');
-  let openModalBtn = document.getElementById('signin-button');
+  let modal = document.getElementById('create-account-modal');
+  let openModalBtn = document.getElementById('create-account-button');
   let closeModalBtn = document.getElementById('modal-close-btn');
   openModalBtn.addEventListener('click', openModal);
   closeModalBtn.addEventListener('click', closeModal);
@@ -65,7 +67,7 @@ function onFormSubmission(app) {
 }
 
 function closeModal() {
-  let modal = document.getElementById('signin-modal')
+  let modal = document.getElementById('create-account-modal')
   modal.style.display = "none";
 }
 
