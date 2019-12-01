@@ -1,7 +1,7 @@
 import SportsProp from './SportsProp.js';
 import Slider from './Slider.js';
 import fetchSportsProps from './sportsPropsData.js';
-import * as modalEventListeners from './listeners/DOMeventListeners.js';
+import * as DomEventListeners from './listeners/DomEventListeners.js';
 
 class App {
   constructor() {
@@ -30,12 +30,26 @@ class App {
   }
 
   addEventListeners() {
-    modalEventListeners.addModalListeners();
+    let signOutBtn = document.getElementById('signout-button');
+    signOutBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      this.state.user = "";
+
+    })
+    let signInBtn = document.getElementById('signin-button');
+    if (this.state.user) {
+      signOutBtn.style.display = "block";
+      signInBtn.style.display = "none";
+    } else {
+      signOutBtn.style.display = "none";
+      signInBtn.style.display = "block";
+    }
+    DomEventListeners.addModalListeners();
 
     //controls form submission in modal
     document.getElementById("create-account-form").addEventListener("submit", (e) => {
       e.preventDefault();
-      modalEventListeners.onFormSubmission(this);
+      DomEventListeners.onFormSubmission(this);
     });
 
     let sliders = document.getElementsByClassName('slider');
@@ -55,6 +69,8 @@ class App {
         //TODO: MAKE FETCH POST REQUEST THAT UPDATES USER ACCOUNT
       });
     }
+
+
 
 
     let radioButtons = document.querySelectorAll('input[type=radio][name="nav-toggle"]');
@@ -83,5 +99,7 @@ class App {
     document.querySelector('#helper').style.display = "inline";
     document.querySelector('#daily-total-picks').innerHTML = numOfProps;
   }
+
+
 }
 export default App;

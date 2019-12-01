@@ -1,3 +1,7 @@
+function handleOnLogout(app) {
+  this.state.user = "";
+}
+
 function addModalListeners() {
   let modal = document.getElementById('signin-modal');
   let openModalBtn = document.getElementById('signin-button');

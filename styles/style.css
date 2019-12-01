@@ -122,13 +122,17 @@
   opacity: 1;
 }
 
-.sign-in-button {
+.account-button {
   background-color: rgb(226, 91, 41);
   color: white;
   font-weight: 600;
   font-size: 1.25em;
   margin: 10px;
   cursor: pointer;
+}
+
+#signout-button {
+  display: none;
 }
 
 button:hover {
