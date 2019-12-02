@@ -1,3 +1,30 @@
+function fetchUserPicks(app) {
+  let user_id = app.state.user_id;
+  return fetch(`http://localhost:3050/api/v1/user_picks?user_id=${user_id}`)
+    .then(response => response.json())
+    .then(json => console.log(json));
+}
+
+function createUserPicks(app, e, side) {
+  return fetch('http://localhost:3050/api/v1/user_picks', {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "Accepts": "application/json"
+    },
+    body: JSON.stringify({
+      user_id: app.state.user_id,
+      contest_prop_id: 1,
+      side: side,
+      confidence: e.target.value
+    })
+  })
+    .then(response => response.json())
+    .then(json => console.log(json));
+}
+
+
+
 export function apiRequestLogin() {
   return alert("You've been signed in!")
   // let formData = {
@@ -28,3 +55,7 @@ export default function fetchSportsProps() {
     .then(response => response.json());
 }
 
+export {
+  fetchUserPicks,
+  createUserPicks
+}

@@ -8,6 +8,7 @@ class App {
   constructor() {
     console.log("Application Starting...");
     this.state = {
+      user_id: "",
       user: "",
       props: ""
     };
