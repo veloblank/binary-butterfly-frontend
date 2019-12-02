@@ -2,11 +2,11 @@ function createAccountModalListeners() {
   let modal = document.getElementById('create-account-modal');
   let openModalBtn = document.getElementById('create-account-button');
   let closeModalBtn = document.getElementById('modal-close-btn');
+
   openModalBtn.addEventListener('click', openModal);
   closeModalBtn.addEventListener('click', closeModal);
-
-  //Outside 'click' event of modal
   window.addEventListener('click', clickOutside);
+
 
   function openModal() {
     modal.style.display = "block";
@@ -62,8 +62,7 @@ function onCreateAccountFormSubmission(app) {
 }
 
 function exitModal() {
-  let modal = document.getElementById('create-account-modal')
-  modal.style.display = "none";
+  document.getElementById('create-account-modal').style.display = "none";
 }
 
 
