@@ -30,7 +30,7 @@ function onCreateAccountFormSubmission(app) {
   let formData = {
     email: submittedForm.elements[0].value,
     username: submittedForm.elements[1].value
-  }
+  };
 
   let configObj = {
     method: "POST",
@@ -69,4 +69,4 @@ function exitModal() {
 export {
   createAccountModalListeners,
   onCreateAccountFormSubmission
-}
+};
