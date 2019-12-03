@@ -1,4 +1,4 @@
-const onSignInClick = (app) => {
+const onSignInClick = () => {
   let modal = document.getElementById('signin-modal');
   modal.style.display = "block";
 };
