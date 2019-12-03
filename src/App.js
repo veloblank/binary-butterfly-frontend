@@ -1,8 +1,7 @@
 import * as fetchFunc from './fetchRequests.js';
-import * as eventHandlers from './eventHandlers.js';
-import SportsProp from './SportsProp.js';
-import Slider from './Slider.js';
 import * as DomEventListeners from './listeners/DomEventListeners.js';
+import Slider from './Slider.js';
+import SportsProp from './SportsProp.js';
 
 class App {
   constructor() {
@@ -26,7 +25,8 @@ class App {
           prop.renderHtml();
           slider.render();
         }
-      });
+      })
+      .catch(error => console.log("There was an error connecting to the server: \n", error))
 
     //sets delay so Props can be fetched and built before Listeners are added
     setInterval(() => {
