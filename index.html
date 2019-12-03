@@ -28,7 +28,7 @@
       </form>
     </nav>
     <header class="week-description">
-      <h2 class="week-number">Week 11</h2>
+      <h2 id="week-number">Week 11</h2>
     </header>
     <div class="container" id="contest-instructions" style="background-color: black;">
       <p id="instructions">Fancy yourself a sports prognosticator?! Put your skills to the test and compete alongside
@@ -37,21 +37,21 @@
     </div>
     <h1>Daily Picks</h1>
     <div class="views view-is-active" id="daily-picks" style="visibility: visible;">
-      <div id="picks">
-
-      </div>
+      <div id="picks"></div>
     </div>
     <div class="views" id="user-results" style="display:none;">User Results</div>
     <div class="views" id="leaderboards" style="display:none;">Leaderboards</div>
   </div>
 
-  <div class="summary" style="display: flex">
+  <div class="summary-container">
+
     <div class="summary-group" id="remaining-picks">
       <h3 class="total-picks-made">
-        <span id="daily-total-picks-made">
-
-        </span> <span id="helper">of </span><span id="daily-total-picks">0</span> picks made</h3>
+        <span id="daily-total-picks-made"></span> <span id="helper">of </span><span id="daily-total-picks">0</span>
+        picks made
+      </h3>
     </div>
+
     <div class="summary-group" id="user-score">
       <div id="user-prior-week-points">
         Your Week 10 points: <span>-55.0</span> points
@@ -60,10 +60,6 @@
         Your Total Points: <span id="js-total-points">235</span> points
       </div>
     </div>
-
-
-
-
 
     <div class="summary-group" id="account-buttons-group">
       <div class="account-buttons">
@@ -80,6 +76,7 @@
         </div>
       </div>
     </div>
+
   </div>
 
   <div class="modal-container" id="create-account-modal">
