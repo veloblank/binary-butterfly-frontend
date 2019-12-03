@@ -1,5 +1,11 @@
-const fetchCreateUser = (app) => {
-  let submittedForm = document.getElementById('create-account-form');
+const fetchSportsProps = () => {
+  return fetch("http://localhost:3050/api/v1/current").then(response =>
+    response.json()
+  );
+};
+
+const fetchCreateUser = () => {
+  let submittedForm = document.getElementById("create-account-form");
   let formData = {
     email: submittedForm.elements[0].value,
     username: submittedForm.elements[1].value
@@ -9,29 +15,30 @@ const fetchCreateUser = (app) => {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
-      "Accept": "application/json"
+      Accept: "application/json"
     },
     body: JSON.stringify(formData)
   };
 
-  fetch('http://localhost:3050/api/v1/users', configObj)
+  fetch("http://localhost:3050/api/v1/users", configObj)
     .then(response => response.json())
     .then(data => {
       if (data.message.errors) {
-        let parent = document.createElement('ul');
+        let parent = document.createElement("ul");
         let li = "";
         data.message.errors.forEach(error => {
-          document.getElementById('account-errors').innerHTML = "";
+          document.getElementById("account-errors").innerHTML = "";
           li += `<li>${error}</li>`;
           parent.innerHTML = li;
-          return document.getElementById('account-errors').append(parent);
-        })
+          return document.getElementById("account-errors").append(parent);
+        });
       } else {
-        return document.getElementById('create-account-modal').style.display = "none";
-      };
+        return (document.getElementById("create-account-modal").style.display =
+          "none");
+      }
     })
     .catch(error => {
-      console.log('Looks like there was a problem: \n', error);
+      console.log("Looks like there was a problem: \n", error);
     });
 };
 
@@ -43,11 +50,11 @@ const fetchUserPicks = () => {
 };
 
 const createUserPicks = () => {
-  return fetch('http://localhost:3050/api/v1/user_picks', {
+  return fetch("http://localhost:3050/api/v1/user_picks", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
-      "Accepts": "application/json"
+      Accepts: "application/json"
     },
     body: JSON.stringify({
       user_id: 100,
@@ -59,7 +66,6 @@ const createUserPicks = () => {
     .then(response => response.json())
     .then(json => console.log(json));
 };
-
 
 const handleLogin = () => {
   let formData = {
@@ -76,7 +82,7 @@ const handleLogin = () => {
     body: JSON.stringify(formData)
   };
 
-  fetch('http://localhost:3050/api/v1/login', configObj)
+  fetch("http://localhost:3050/api/v1/login", configObj)
     .then(response => response.json())
     .then(json => {
       this.state.user = "User";
@@ -86,15 +92,10 @@ const handleLogin = () => {
     });
 };
 
-const fetchSportsProps = () => {
-  return fetch('http://localhost:3050/api/v1/current')
-    .then(response => response.json());
-};
-
 export {
+  fetchSportsProps,
   fetchCreateUser,
   fetchUserPicks,
   createUserPicks,
-  handleLogin,
-  fetchSportsProps
+  handleLogin
 };
