@@ -1,15 +1,14 @@
 import * as fetchFunc from './fetchRequests.js';
-import * as DomEventListeners from './listeners/DomEventListeners.js';
 import Slider from './Slider.js';
 import SportsProp from './SportsProp.js';
+import * as DomEventListeners from './listeners/DomEventListeners.js';
 
 class App {
   constructor() {
-    console.log("Application Starting...");
     this.state = {
       user_id: "",
       user: "",
-      props: "",
+      props: [],
       date: new Date()
     };
     this.buildProps();
@@ -30,7 +29,7 @@ class App {
 
     //sets delay so Props can be fetched and built before Listeners are added
     setInterval(() => {
-    }, 300);
+    }, 1000);
   }
 
   addEventListeners() {
@@ -74,13 +73,32 @@ class App {
 
     window.addEventListener('click', (e) => {
       let createModal = document.getElementById('create-account-modal');
-      let signinModal = document.getElementById('create-account-modal');
-      if ([createModal, signinModal].includes(e.target)) {
+      let signinModal = document.getElementById('signin-modal');
+      if (createModal === e.target || signinModal === e.target) {
         e.target.style.display = "none";
       }
     });
-    DomEventListeners.addListenerToSignOutBtn(this);
-    DomEventListeners.addListenersToSliders();
+
+    let sliders = document.getElementsByClassName('slider');
+    for (let slider of sliders) {
+      console.log(slider)
+      slider.addEventListener('input', e => {
+        if (e.target.value > 0) {
+          document.getElementById(`prop-${e.target.dataset.id}-home-values`).innerHTML = e.target.value * 10 / 10;
+          document.getElementById(`prop-${e.target.dataset.id}-away-values`).innerHTML = Math.round((e.target.value * 30) / 10) * (-1);
+        } else {
+          document.getElementById(`prop-${e.target.dataset.id}-away-values`).innerHTML = e.target.value * (-10) / 10;
+          document.getElementById(`prop-${e.target.dataset.id}-home-values`).innerHTML = Math.round((e.target.value * 30) / 10);
+        }
+      });
+
+      slider.addEventListener('mouseup', () => {
+        displayPoints();
+        //TODO: Make patch req to server that shows the user has made this pick
+      });
+
+      DomEventListeners.addListenerToSignOutBtn(this);
+    }
   }
 }
 
