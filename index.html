@@ -32,10 +32,24 @@
     </header>
     <div class="container" id="contest-instructions" style="background-color: black;">
       <p id="instructions">Fancy yourself a sports prognosticator?! Put your skills to the test and compete alongside
-        others for Top Dog status! Use the slider to rate your confidence on your pick, but be careful--extreme
+        others for Top Dog status! Use the sliders to rate your confidence on your pick, but be careful--extreme
         overconfidence is penalized in this game!</p>
+      <div class="account-buttons" id="account-buttons-group">
+        <div class="account-buttons">
+          <button class="account-button" id="create-account-button">
+            Create an Account!
+          </button>
+          <button class="account-button" id="signout-button">
+            Log Out
+          </button>
+          <div class="signin-container">
+            <button id="signin-button">
+              Sign In to Play!
+            </button>
+          </div>
+        </div>
+      </div>
     </div>
-    <h1>Daily Picks</h1>
     <div class="views view-is-active" id="daily-picks" style="visibility: visible;">
       <div id="picks"></div>
     </div>
@@ -60,23 +74,6 @@
         Your Total Points: <span id="js-total-points">235</span> points
       </div>
     </div>
-
-    <div class="summary-group" id="account-buttons-group">
-      <div class="account-buttons">
-        <button class="account-button" id="create-account-button">
-          Create an Account!
-        </button>
-        <button class="account-button" id="signout-button">
-          Log Out
-        </button>
-        <div class="signin-container">
-          <button id="signin-button">
-            Sign In to Play!
-          </button>
-        </div>
-      </div>
-    </div>
-
   </div>
 
   <div class="modal-container" id="create-account-modal">
