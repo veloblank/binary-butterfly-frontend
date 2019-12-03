@@ -1,17 +1,21 @@
 class SportsProp {
   constructor(obj) {
     this.id = obj.id;
-    this.week_id = obj.contest_board_id;
     this.title = obj.title;
+    this.prop_date = obj.date;
+    this.week_id = obj.contest_board_id;
     this.away_team = obj.away_team;
+    this.away_team_won = obj.away_team_won;
     this.home_team = obj.home_team;
+    this.home_team_won = obj.home_team_won;
     this.start_time = obj.start_time;
-    this.user_selection = 50;
+    this.prop_locked = obj.locked;
+    this.prop_scored = obj.scored;
   }
 
-  render() {
+  renderHtml() {
     let propElement = document.createElement('div');
-    propElement.classList.add('sports-prop');
+    propElement.classList.add('sports-prop', 'locked-false');
     propElement.innerHTML =
       `<div class="prop-title">
         <p>${this.title}</p>

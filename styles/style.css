@@ -140,6 +140,7 @@
   cursor: pointer;
 }
 
+
 #signin-button {
   margin: auto 5px 5px 5px;
 }
@@ -172,6 +173,10 @@ button:hover {
 #user-score {
   padding: 15px;
 }
+
+/* .locked-false {}
+
+.locked-true{} */
 
 .logged-in {
   display: block;
