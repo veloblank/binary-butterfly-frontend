@@ -1,11 +1,46 @@
-function fetchUserPicks(app) {
-  let user_id = app.state.user_id;
+const fetchCreateUser = (app) => {
+  let submittedForm = document.getElementById('create-account-form');
+  let formData = {
+    email: submittedForm.elements[0].value,
+    username: submittedForm.elements[1].value
+  };
+
+  let configObj = {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "Accept": "application/json"
+    },
+    body: JSON.stringify(formData)
+  };
+
+  fetch('http://localhost:3050/api/v1/users', configObj)
+    .then(response => response.json())
+    .then(data => {
+      if (data.status !== 201) {
+        let parent = document.createElement('ul');
+        let li = "";
+        data.message.errors.forEach(error => {
+          document.getElementById('account-errors').innerHTML = "";
+          li += `<li>${error}</li>`;
+          parent.innerHTML = li;
+          return document.getElementById('account-errors').append(parent);
+        });
+      } else {
+        app.state.user = data.user;
+        exitModal();
+      }
+    });
+}
+
+const fetchUserPicks = () => {
+  let user_id = this.state.user_id;
   return fetch(`http://localhost:3050/api/v1/user_picks?user_id=${user_id}`)
     .then(response => response.json())
     .then(json => console.log(json));
 }
 
-function createUserPicks(app, e, side) {
+const createUserPicks = () => {
   return fetch('http://localhost:3050/api/v1/user_picks', {
     method: "POST",
     headers: {
@@ -13,10 +48,10 @@ function createUserPicks(app, e, side) {
       "Accepts": "application/json"
     },
     body: JSON.stringify({
-      user_id: app.state.user_id,
+      user_id: 100,
       contest_prop_id: 1,
-      side: side,
-      confidence: e.target.value
+      side: "away",
+      confidence: 17
     })
   })
     .then(response => response.json())
@@ -24,8 +59,7 @@ function createUserPicks(app, e, side) {
 }
 
 
-
-export function handleLogin() {
+const handleLogin = () => {
   let formData = {
     username: "veloblank",
     email: "veloblank@gmail.com"
@@ -50,12 +84,15 @@ export function handleLogin() {
     });
 }
 
-export default function fetchSportsProps() {
+const fetchSportsProps = () => {
   return fetch('http://localhost:3050/api/v1/current')
     .then(response => response.json());
 }
 
 export {
+  fetchCreateUser,
   fetchUserPicks,
-  createUserPicks
+  createUserPicks,
+  handleLogin,
+  fetchSportsProps
 };

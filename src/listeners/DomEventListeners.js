@@ -1,3 +1,5 @@
+import * as fetchFuncs from '../fetchRequests.js';
+
 function createAccountModalListeners() {
   let modal = document.getElementById('create-account-modal');
   let openModalBtn = document.getElementById('create-account-button');
@@ -25,40 +27,7 @@ function createAccountModalListeners() {
 
 
 function onCreateAccountFormSubmission(app) {
-  let submittedForm = document.getElementById('create-account-form');
-
-  let formData = {
-    email: submittedForm.elements[0].value,
-    username: submittedForm.elements[1].value
-  };
-
-  let configObj = {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      "Accept": "application/json"
-    },
-    body: JSON.stringify(formData)
-  };
-
-  fetch('http://localhost:3050/api/v1/users', configObj)
-    .then(response => response.json())
-    .then(data => {
-      if (data.status !== 201) {
-        let parent = document.createElement('ul');
-        let li = "";
-        data.message.errors.forEach(error => {
-          document.getElementById('account-errors').innerHTML = "";
-          li += `<li>${error}</li>`;
-          parent.innerHTML = li;
-          return document.getElementById('account-errors').append(parent);
-        });
-      } else {
-        app.state.user = data.user;
-        exitModal();
-      }
-    });
-
+  fetchFuncs.fetchCreateUser(app);
 }
 
 function exitModal() {

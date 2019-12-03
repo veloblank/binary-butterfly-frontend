@@ -1,4 +1,4 @@
-import fetchSportsProps from './fetchRequests.js';
+import * as fetchFunc from './fetchRequests.js';
 import * as eventHandlers from './eventHandlers.js';
 import SportsProp from './SportsProp.js';
 import Slider from './Slider.js';
@@ -12,11 +12,11 @@ class App {
       user: "",
       props: ""
     };
-    this.buildProps();
+    //this.buildProps();
   }
 
   buildProps() {
-    fetchSportsProps()
+    fetchFunc.fetchSportsProps()
       .then(arr => {
         for (let obj of arr) {
           obj = new SportsProp(obj);
