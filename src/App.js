@@ -26,7 +26,7 @@ class App {
           slider.render();
         }
       })
-      .catch(error => console.log("There was an error connecting to the server: \n", error))
+      .catch(error => console.log("There was an error connecting to the server: \n", error));
 
     //sets delay so Props can be fetched and built before Listeners are added
     setInterval(() => {

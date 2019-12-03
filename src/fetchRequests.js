@@ -17,12 +17,7 @@ const fetchCreateUser = (app) => {
   fetch('http://localhost:3050/api/v1/users', configObj)
     .then(response => response.json())
     .then(data => {
-      debugger
-      if (data.status === 200) {
-        app.state.user = data.user;
-        console.log(app.state)
-        return document.getElementById('create-account-modal').style.display = "none";
-      } else {
+      if (data.message.errors) {
         let parent = document.createElement('ul');
         let li = "";
         data.message.errors.forEach(error => {
@@ -30,8 +25,10 @@ const fetchCreateUser = (app) => {
           li += `<li>${error}</li>`;
           parent.innerHTML = li;
           return document.getElementById('account-errors').append(parent);
-        });
-      }
+        })
+      } else {
+        return document.getElementById('create-account-modal').style.display = "none";
+      };
     })
     .catch(error => {
       console.log('Looks like there was a problem: \n', error);
@@ -91,7 +88,7 @@ const handleLogin = () => {
 
 const fetchSportsProps = () => {
   return fetch('http://localhost:3050/api/v1/current')
-    .then(response => response.json())
+    .then(response => response.json());
 };
 
 export {
