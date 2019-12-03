@@ -7,18 +7,18 @@ import * as DomEventListeners from "./listeners/DomEventListeners.js";
 class App {
   constructor() {
     this.state = {
-      userLoggedIn: this.loggedIn(),
+      userLoggedIn: false,
       user_id: "",
       user: null,
       props: [],
       date: new Date()
     };
-    this.buildProps();
+    this.loggedIn(),
+      this.buildProps();
   }
 
   loggedIn() {
     this.state.user ? true : false;
-    console.log(this.state);
   }
 
   buildProps() {
@@ -36,10 +36,10 @@ class App {
         console.log("There was an error connecting to the server: \n", error)
       );
 
-    //sets delay so Props can be fetched and built before Listeners are added
-    setInterval(() => {
-      this.addEventListeners();
-    }, 100);
+    // //sets delay so Props can be fetched and built before Listeners are added
+    // setTimeout(() => {
+    // this.addEventListeners();
+    // }, 300);
   }
 
   addEventListeners() {
