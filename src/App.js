@@ -1,6 +1,7 @@
 import * as fetchFunc from './fetchRequests.js';
 import Slider from './Slider.js';
 import SportsProp from './SportsProp.js';
+import * as mathFuncs from './mathFuncs.js';
 import * as DomEventListeners from './listeners/DomEventListeners.js';
 
 class App {
@@ -12,7 +13,6 @@ class App {
       date: new Date()
     };
     this.buildProps();
-    this.addEventListeners();
   }
 
   buildProps() {
@@ -29,7 +29,8 @@ class App {
 
     //sets delay so Props can be fetched and built before Listeners are added
     setInterval(() => {
-    }, 1000);
+      this.addEventListeners();
+    }, 100);
   }
 
   addEventListeners() {
@@ -81,7 +82,6 @@ class App {
 
     let sliders = document.getElementsByClassName('slider');
     for (let slider of sliders) {
-      console.log(slider)
       slider.addEventListener('input', e => {
         if (e.target.value > 0) {
           document.getElementById(`prop-${e.target.dataset.id}-home-values`).innerHTML = e.target.value * 10 / 10;
@@ -93,7 +93,7 @@ class App {
       });
 
       slider.addEventListener('mouseup', () => {
-        displayPoints();
+        mathFuncs.displayPoints();
         //TODO: Make patch req to server that shows the user has made this pick
       });
 
