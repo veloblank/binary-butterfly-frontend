@@ -13,12 +13,12 @@ class App {
       props: [],
       date: new Date()
     };
-    this.loggedIn(),
-      this.buildProps();
+    this.loggedIn();
+    this.buildProps();
   }
 
   loggedIn() {
-    this.state.user ? true : false;
+    return this.state.user ? true : false;
   }
 
   buildProps() {

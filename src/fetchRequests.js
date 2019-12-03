@@ -54,7 +54,7 @@ const createUserPicks = () => {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        Accepts: "application/json"
+        "Accept": "application/json"
       },
       body: JSON.stringify({
         user_id: 100,
