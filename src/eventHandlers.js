@@ -10,4 +10,4 @@ const onSignOutClick = (app) => {
 export {
   onSignInClick,
   onSignOutClick
-}
+};

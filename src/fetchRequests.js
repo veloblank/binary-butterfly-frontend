@@ -31,14 +31,14 @@ const fetchCreateUser = (app) => {
         exitModal();
       }
     });
-}
+};
 
 const fetchUserPicks = () => {
   let user_id = this.state.user_id;
   return fetch(`http://localhost:3050/api/v1/user_picks?user_id=${user_id}`)
     .then(response => response.json())
     .then(json => console.log(json));
-}
+};
 
 const createUserPicks = () => {
   return fetch('http://localhost:3050/api/v1/user_picks', {
@@ -56,7 +56,7 @@ const createUserPicks = () => {
   })
     .then(response => response.json())
     .then(json => console.log(json));
-}
+};
 
 
 const handleLogin = () => {
@@ -82,12 +82,12 @@ const handleLogin = () => {
       createActBtn.style.display = "none";
       signInBtn.style.display = "none";
     });
-}
+};
 
 const fetchSportsProps = () => {
   return fetch('http://localhost:3050/api/v1/current')
     .then(response => response.json());
-}
+};
 
 export {
   fetchCreateUser,

@@ -10,8 +10,10 @@ class App {
     this.state = {
       user_id: "",
       user: "",
-      props: ""
+      props: "",
+      date: new Date()
     };
+    console.log(this.state)
     //this.buildProps();
   }
 
