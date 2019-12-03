@@ -14,6 +14,7 @@ class App {
       date: new Date()
     };
     this.buildProps();
+    this.addEventListeners();
   }
 
   buildProps() {
@@ -29,33 +30,57 @@ class App {
 
     //sets delay so Props can be fetched and built before Listeners are added
     setInterval(() => {
-      this.addEventListeners(this);
-    }, 25);
+    }, 300);
   }
 
-  addEventListeners(app) {
-    DomEventListeners.addListenersToAccountBtns(app);
-    DomEventListeners.createAccountModalListeners();
-    DomEventListeners.addListenersToSliders();
-
+  addEventListeners() {
     let radioButtons = document.querySelectorAll('input[type=radio][name="nav-toggle"]');
     for (let button of radioButtons) {
       button.addEventListener('click', () => {
-        this.parentNode.parentNode.attributes['data-view'] = this.value;
         let views = document.querySelectorAll('.views');
-        let view = document.getElementById(this.value);
+        let view = document.getElementById(button.value);
         views.forEach(div => {
           div.style.display = "none";
+          view.style.display = "block";
         });
-        view.style.display = "block";
       });
     }
 
-    //controls form submission in modal
     document.getElementById("create-account-form").addEventListener("submit", (e) => {
       e.preventDefault();
-      DomEventListeners.onCreateAccountFormSubmission(this);
+      fetchFunc.fetchCreateUser(this);
     });
+
+    document.getElementById('open-create-account-modal').addEventListener('click', (e) => {
+      let modal = document.getElementById('create-account-modal');
+      e.preventDefault();
+      modal.style.display = "block";
+    });
+
+    document.getElementById('create-modal-close-btn').addEventListener('click', () => {
+      let modal = document.getElementById('create-account-modal');
+      modal.style.display = "none";
+    });
+
+    document.getElementById('open-signin-account-modal').addEventListener('click', (e) => {
+      let modal = document.getElementById('signin-modal');
+      modal.style.display = "block";
+    });
+
+    document.getElementById('signin-modal-close-btn').addEventListener('click', () => {
+      let modal = document.getElementById('signin-modal');
+      modal.style.display = "none";
+    });
+
+    window.addEventListener('click', (e) => {
+      let createModal = document.getElementById('create-account-modal');
+      let signinModal = document.getElementById('create-account-modal');
+      if ([createModal, signinModal].includes(e.target)) {
+        e.target.style.display = "none";
+      }
+    });
+    DomEventListeners.addListenerToSignOutBtn(this);
+    DomEventListeners.addListenersToSliders();
   }
 }
 

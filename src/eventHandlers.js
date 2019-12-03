@@ -3,11 +3,18 @@ const onSignInClick = () => {
   modal.style.display = "block";
 };
 
+const onCreateActClick = () => {
+  let modal = document.getElementById('create-account-modal');
+  console.log(modal)
+  modal.style.display = "block";
+}
+
 const onSignOutClick = (app) => {
-  app.state.user = "";
+  console.log(app.state.user)
 };
 
 export {
   onSignInClick,
+  onCreateActClick,
   onSignOutClick
 };
