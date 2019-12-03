@@ -13,22 +13,21 @@ class App {
       props: "",
       date: new Date()
     };
-    console.log(this.state)
-    //this.buildProps();
+    this.buildProps();
   }
 
   buildProps() {
     fetchFunc.fetchSportsProps()
-      .then(arr => {
-        for (let obj of arr) {
-          obj = new SportsProp(obj);
-          obj.render();
+      .then(props => {
+        for (let obj of props) {
           let slider = new Slider(obj);
+          let prop = new SportsProp(obj);
+          prop.renderHtml();
           slider.render();
         }
       });
 
-    //sets delay so Props can be built and rendered before Listeners are added
+    //sets delay so Props can be fetched and built before Listeners are added
     setInterval(() => {
       this.addEventListeners(this);
     }, 500);
