@@ -22,40 +22,33 @@ class App {
   }
 
   buildProps() {
-    fetchFunc
-      .fetchSportsProps()
+    fetchFunc.fetchSportsProps()
       .then(props => {
         for (let obj of props) {
-          let slider = new Slider(obj);
           let prop = new SportsProp(obj);
+          let slider = new Slider(obj);
           prop.renderHtml();
           slider.render();
         }
       })
+      .then(this.addEventListeners())
       .catch(error =>
         console.log("There was an error connecting to the server: \n", error)
       );
-
-    // //sets delay so Props can be fetched and built before Listeners are added
-    // setTimeout(() => {
-    // this.addEventListeners();
-    // }, 300);
   }
 
+
   addEventListeners() {
-    let radioButtons = document.querySelectorAll(
-      'input[type=radio][name="nav-toggle"]'
-    );
-    for (let button of radioButtons) {
-      button.addEventListener("click", () => {
-        let views = document.querySelectorAll(".views");
-        let view = document.getElementById(button.value);
-        views.forEach(div => {
-          div.style.display = "none";
-          view.style.display = "block";
-        });
+    let radioButtons = document.querySelectorAll('input[type=radio][name="nav-toggle"]');
+    radioButtons = [...radioButtons];
+    radioButtons.forEach(button => button.addEventListener('click', () => {
+      let views = document.querySelectorAll(".views");
+      let view = document.getElementById(button.value);
+      views.forEach(div => {
+        div.style.display = "none";
+        view.style.display = "block";
       });
-    }
+    }));
 
     document
       .getElementById("create-account-form")
