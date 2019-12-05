@@ -3,6 +3,7 @@ import Slider from "./Slider.js";
 import SportsProp from "./SportsProp.js";
 import * as mathFuncs from "./mathFuncs.js";
 import * as DomEventListeners from "./listeners/DomEventListeners.js";
+import SportsAdapter from '../adapters/SportPropAdapter.js';
 
 class App {
   constructor() {
@@ -10,33 +11,24 @@ class App {
       userLoggedIn: false,
       user_id: "",
       user: null,
-      props: [],
-      date: new Date()
+      date: new Date(),
+      props: []
     };
-    this.loggedIn();
-    this.buildProps();
+    this.adapter = new SportsAdapter();
+    this.addEventListeners();
   }
 
   loggedIn() {
+    if (this.state.user) {
+      this.fetchAndBindPropstoState();
+    }
     return this.state.user ? true : false;
   }
 
-  buildProps() {
-    fetchFunc.fetchSportsProps()
-      .then(props => {
-        for (let obj of props) {
-          let prop = new SportsProp(obj);
-          let slider = new Slider(obj);
-          prop.renderHtml();
-          slider.render();
-        }
-      })
-      .then(this.addEventListeners())
-      .catch(error =>
-        console.log("There was an error connecting to the server: \n", error)
-      );
+  fetchAndBindPropstoState() {
+    let props = this.adapter.getCurrentProps();
+    console.log(props);
   }
-
 
   addEventListeners() {
     let radioButtons = document.querySelectorAll('input[type=radio][name="nav-toggle"]');
@@ -51,45 +43,28 @@ class App {
     }));
 
     document
-      .getElementById("create-account-form")
-      .addEventListener("submit", e => {
-        e.preventDefault();
-        fetchFunc.fetchCreateUser(this);
-      });
-
-    document
-      .getElementById("open-create-account-modal")
-      .addEventListener("click", e => {
-        let modal = document.getElementById("create-account-modal");
-        e.preventDefault();
-        modal.style.display = "block";
-      });
-
-    document
-      .getElementById("create-modal-close-btn")
-      .addEventListener("click", () => {
-        let modal = document.getElementById("create-account-modal");
-        modal.style.display = "none";
-      });
-
-    document
       .getElementById("open-signin-account-modal")
       .addEventListener("click", e => {
-        let modal = document.getElementById("signin-modal");
+        let modal = document.getElementById("signin-account-modal");
         modal.style.display = "block";
       });
 
     document
       .getElementById("signin-modal-close-btn")
       .addEventListener("click", () => {
-        let modal = document.getElementById("signin-modal");
+        let modal = document.getElementById("signin-account-modal");
         modal.style.display = "none";
       });
 
+    document
+      .getElementById('signin-account-form')
+      .addEventListener("submit", e => {
+        e.preventDefault();
+      })
+
     window.addEventListener("click", e => {
-      let createModal = document.getElementById("create-account-modal");
-      let signinModal = document.getElementById("signin-modal");
-      if (createModal === e.target || signinModal === e.target) {
+      let signinModal = document.getElementById("signin-account-modal");
+      if (signinModal === e.target) {
         e.target.style.display = "none";
       }
     });

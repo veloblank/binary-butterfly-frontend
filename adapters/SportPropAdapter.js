@@ -4,6 +4,9 @@ class SportsPropAdapter {
   }
 
   getCurrentProps() {
-    return fetch(this.baseUrl + "current").then(resp => resp.json());
+    return fetch(this.baseUrl + "current").then(resp => resp.json()
+      .then(data => console.log(data)));
   }
 }
+
+export default SportsPropAdapter;

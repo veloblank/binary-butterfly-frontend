@@ -1,9 +1,3 @@
-const fetchSportsProps = () => {
-  return fetch("http://localhost:3050/api/v1/current").then(response =>
-    response.json()
-  );
-};
-
 const fetchCreateUser = () => {
   let submittedForm = document.getElementById("create-account-form");
   let formData = {
@@ -33,8 +27,10 @@ const fetchCreateUser = () => {
           return document.getElementById("account-errors").append(parent);
         });
       } else {
-        return (document.getElementById("create-account-modal").style.display =
-          "none");
+        console.log("You have successfully created an account and logged in!")
+        //   return (document.getElementById("create-account-modal").style.display =
+        //     "none");
+        // }
       }
     })
     .catch(error => {
@@ -51,18 +47,18 @@ const fetchUserPicks = () => {
 
 const createUserPicks = () => {
   return fetch("http://localhost:3050/api/v1/user_picks", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "Accept": "application/json"
-      },
-      body: JSON.stringify({
-        user_id: 100,
-        contest_prop_id: 1,
-        side: "away",
-        confidence: 17
-      })
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "Accept": "application/json"
+    },
+    body: JSON.stringify({
+      user_id: 100,
+      contest_prop_id: 1,
+      side: "away",
+      confidence: 17
     })
+  })
     .then(response => response.json())
     .then(json => console.log(json));
 };
@@ -85,15 +81,11 @@ const handleLogin = () => {
   fetch("http://localhost:3050/api/v1/login", configObj)
     .then(response => response.json())
     .then(json => {
-      this.state.user = "User";
-      signOutBtn.style.display = "block";
-      createActBtn.style.display = "none";
-      signInBtn.style.display = "none";
+      console.log(json)
     });
 };
 
 export {
-  fetchSportsProps,
   fetchCreateUser,
   fetchUserPicks,
   createUserPicks,
