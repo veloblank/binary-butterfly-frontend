@@ -39,17 +39,12 @@
       </p>
       <div class="account-buttons" id="account-buttons-group">
         <div class="account-buttons">
-          <button class="account-button" id="open-create-account-modal">
-            Create an Account!
+          <button class="account-button" id="open-signin-account-modal">
+            Sign in to Play!
           </button>
           <button class="account-button" id="signout-button">
             Log Out
           </button>
-          <div class="signin-container">
-            <button id="open-signin-account-modal">
-              Sign In to Play!
-            </button>
-          </div>
         </div>
       </div>
     </div>
@@ -82,38 +77,14 @@
     </div>
   </div>
 
-  <div class="modal-container" id="create-account-modal">
-    <div class="modal-content">
-      <span class="modal-close-btn" id="create-modal-close-btn">&times;</span>
-      <div class="google-signin" style="text-align: center">
-        <img src="./images/google-icon.svg" alt="" />
-        <p><a href="#">Create Account with Google</a></p>
-        <div class="form">
-          <form id="create-account-form">
-            <label for="email">Email</label><br />
-            <input type="email" name="email" autofocus="true" /><br />
-
-            <label for="username">Username</label><br />
-            <input type="text" name="username" /><br />
-
-            <div class="errors-container">
-              <div class="error-field" id="account-errors"></div>
-              <input id="create-account-btn" type="submit" value="Create Account" />
-            </div>
-          </form>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="modal-container" id="signin-modal">
+  <div class="modal-container" id="signin-account-modal">
     <div class="modal-content">
       <span class="modal-close-btn" id="signin-modal-close-btn">&times;</span>
       <div class="google-signin" style="text-align: center">
         <img src="./images/google-icon.svg" alt="" />
-        <p><a href="#">Sign in with Google</a></p>
+        <p><a href="#">Create Account with Google</a></p>
         <div class="form">
-          <form id="create-account-form">
+          <form id="signin-account-form">
             <label for="email">Email</label><br />
             <input type="email" name="email" autofocus="true" /><br />
 
@@ -122,7 +93,7 @@
 
             <div class="errors-container">
               <div class="error-field" id="account-errors"></div>
-              <input id="signin-btn" type="submit" value="Sign In" />
+              <input id="signin-account-btn" type="submit" value="Sign In" />
             </div>
           </form>
         </div>
