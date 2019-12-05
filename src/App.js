@@ -1,33 +1,24 @@
-import * as fetchFunc from "./fetchRequests.js";
-import Slider from "./Slider.js";
-import SportsProp from "./SportsProp.js";
+import SportsPropBuilder from './SportsPropBuilder.js';
 import * as mathFuncs from "./mathFuncs.js";
 import * as DomEventListeners from "./listeners/DomEventListeners.js";
-import SportsAdapter from '../adapters/SportPropAdapter.js';
 
 class App {
   constructor() {
     this.state = {
-      userLoggedIn: false,
+      userLoggedIn: null,
       user_id: "",
       user: null,
       date: new Date(),
-      props: []
     };
-    this.adapter = new SportsAdapter();
+    this.propBuilder = new SportsPropBuilder();
+    this.loggedIn();
     this.addEventListeners();
   }
 
   loggedIn() {
     if (this.state.user) {
-      this.fetchAndBindPropstoState();
     }
     return this.state.user ? true : false;
-  }
-
-  fetchAndBindPropstoState() {
-    let props = this.adapter.getCurrentProps();
-    console.log(props);
   }
 
   addEventListeners() {
@@ -60,7 +51,7 @@ class App {
       .getElementById('signin-account-form')
       .addEventListener("submit", e => {
         e.preventDefault();
-      })
+      });
 
     window.addEventListener("click", e => {
       let signinModal = document.getElementById("signin-account-modal");
@@ -93,8 +84,6 @@ class App {
         mathFuncs.displayPoints();
         //TODO: Make patch req to server that shows the user has made this pick
       });
-
-      DomEventListeners.addListenerToSignOutBtn(this);
     }
   }
 }
