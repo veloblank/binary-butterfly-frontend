@@ -1,4 +1,3 @@
-import displayPoints from '../mathFuncs.js';
 import * as eventHandlers from '../eventHandlers.js';
 
 function addListenerToSignOutBtn(app) {

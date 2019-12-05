@@ -27,7 +27,7 @@ const fetchCreateUser = () => {
           return document.getElementById("account-errors").append(parent);
         });
       } else {
-        console.log("You have successfully created an account and logged in!")
+        console.log("You have successfully created an account and logged in!");
         //   return (document.getElementById("create-account-modal").style.display =
         //     "none");
         // }
@@ -81,7 +81,7 @@ const handleLogin = () => {
   fetch("http://localhost:3050/api/v1/login", configObj)
     .then(response => response.json())
     .then(json => {
-      console.log(json)
+      console.log(json);
     });
 };
 

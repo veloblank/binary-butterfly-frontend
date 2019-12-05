@@ -10,7 +10,7 @@ class Slider {
       <div class="slider-values">
         <div data-id="${this.id}"id="prop-${this.id}-away-values"><strong>0 pts</strong></div>
         <div data-id="${this.id}"id="prop-${this.id}-home-values"><strong>0 pts</strong></div>
-      </div>`
+      </div>`;
     document.getElementById(`slider-container-${this.id}`).innerHTML = slider;
   }
 }
