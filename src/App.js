@@ -1,6 +1,6 @@
 import SportsPropBuilder from './SportsPropBuilder.js';
+import { addModalListeners } from './listeners/modalListeners.js'
 import * as mathFuncs from "./mathFuncs.js";
-import * as DomEventListeners from "./listeners/DomEventListeners.js";
 
 class App {
   constructor() {
@@ -11,41 +11,21 @@ class App {
       date: new Date(),
     };
     this.propBuilder = new SportsPropBuilder();
-    this.loggedIn();
     this.addEventListeners();
   }
 
-  loggedIn() {
+  loggedIn(data) {
+    if (data.username) {
+      console.log(data)
+      this.state.user_id = data.id
+      this.state.user = data.username
+      this.userLoggedIn = true
+    };
     return this.state.user ? true : false;
   }
 
   addEventListeners() {
-    document
-      .getElementById("open-signin-account-modal")
-      .addEventListener("click", e => {
-        let modal = document.getElementById("signin-account-modal");
-        modal.style.display = "block";
-      });
-
-    document
-      .getElementById("signin-modal-close-btn")
-      .addEventListener("click", () => {
-        let modal = document.getElementById("signin-account-modal");
-        modal.style.display = "none";
-      });
-
-    document
-      .getElementById('signin-account-form')
-      .addEventListener("submit", e => {
-        e.preventDefault();
-      });
-
-    window.addEventListener("click", e => {
-      let signinModal = document.getElementById("signin-account-modal");
-      if (signinModal === e.target) {
-        e.target.style.display = "none";
-      }
-    });
+    addModalListeners();
 
     let sliders = document.getElementsByClassName("slider");
     for (let slider of sliders) {
