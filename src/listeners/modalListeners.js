@@ -46,4 +46,7 @@ function closeModal() {
   signInBtn.classList.add('signed-in')
 }
 
-export { addModalListeners, closeModal };
+export {
+  addModalListeners,
+  closeModal
+};

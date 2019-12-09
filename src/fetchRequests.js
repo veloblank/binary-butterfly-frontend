@@ -1,5 +1,7 @@
 import fetchErrorHandler from './errorHandler.js';
-import { closeModal } from './listeners/modalListeners.js'
+import {
+  closeModal
+} from './listeners/modalListeners.js'
 
 const fetchCreateUser = async (e) => {
   let formData = {
@@ -20,8 +22,10 @@ const fetchCreateUser = async (e) => {
     .then(response => response.json())
     .then(data => {
       if (!data.message) {
+        console.log("Successfully logged in!");
+        console.log(data);
         closeModal();
-        fetchUserPicks(data)
+        //fetchUserPicks(data)
       } else {
         fetchErrorHandler(data)
       }
@@ -29,7 +33,8 @@ const fetchCreateUser = async (e) => {
 }
 
 const fetchUserPicks = async (data) => {
-  let user_id = data.id
+  let user_id = data.id;
+  console.log(user_id);
   await fetch(`http://localhost:3000/api/v1/user_picks?user_id=${user_id}`)
     .then(response => response.json())
     .then(json => console.log(json));
@@ -37,18 +42,18 @@ const fetchUserPicks = async (data) => {
 
 const createUserPicks = async () => {
   await fetch("http://localhost:3000/api/v1/user_picks", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      "Accept": "application/json"
-    },
-    body: JSON.stringify({
-      user_id: 100,
-      contest_prop_id: 1,
-      side: "away",
-      confidence: 17
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Accept": "application/json"
+      },
+      body: JSON.stringify({
+        user_id: 100,
+        contest_prop_id: 1,
+        side: "away",
+        confidence: 17
+      })
     })
-  })
     .then(response => response.json())
     .then(json => console.log(json));
 };
