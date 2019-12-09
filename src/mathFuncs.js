@@ -11,4 +11,4 @@ function displayPoints() {
   document.querySelector('#daily-total-picks').innerHTML = numOfProps;
 }
 
-export default displayPoints;
+export { displayPoints };

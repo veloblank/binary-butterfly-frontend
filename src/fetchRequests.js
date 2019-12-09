@@ -1,7 +1,7 @@
 import fetchErrorHandler from './errorHandler.js';
 import { closeModal } from './listeners/modalListeners.js'
 
-const fetchCreateUser = (e) => {
+const fetchCreateUser = async (e) => {
   let formData = {
     email: e.target[0].value,
     username: e.target[1].value
@@ -16,7 +16,7 @@ const fetchCreateUser = (e) => {
     body: JSON.stringify(formData)
   };
 
-  fetch("http://localhost:3000/api/v1/users", configObj)
+  await fetch("http://localhost:3000/api/v1/users", configObj)
     .then(response => response.json())
     .then(data => {
       if (!data.message) {
@@ -28,15 +28,15 @@ const fetchCreateUser = (e) => {
     })
 }
 
-const fetchUserPicks = (data) => {
+const fetchUserPicks = async (data) => {
   let user_id = data.id
-  return fetch(`http://localhost:3000/api/v1/user_picks?user_id=${user_id}`)
+  await fetch(`http://localhost:3000/api/v1/user_picks?user_id=${user_id}`)
     .then(response => response.json())
     .then(json => console.log(json));
 };
 
-const createUserPicks = () => {
-  return fetch("http://localhost:3000/api/v1/user_picks", {
+const createUserPicks = async () => {
+  await fetch("http://localhost:3000/api/v1/user_picks", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",

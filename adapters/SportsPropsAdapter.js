@@ -1,20 +1,26 @@
 import SportsProp from '../src/SportsProp.js';
 import Slider from '../src/Slider.js';
+import { addSliderListeners } from '../src/listeners/sliderListeners.js'
+
+
 
 class SportsPropsAdapter {
   constructor() {
     this.baseUrl = "http://localhost:3000/api/v1/current";
   }
 
-  async getCurrentProps() {
-    let response = await fetch(this.baseUrl);
-    let data = await response.json();
-    for (let obj of data) {
-      let prop = new SportsProp(obj);
-      let slider = new Slider(obj);
-      prop.renderHtml();
-      slider.render();
-    }
+  getCurrentProps() {
+    fetch(this.baseUrl)
+      .then(response => response.json())
+      .then(data => {
+        for (let obj of data) {
+          let prop = new SportsProp(obj);
+          let slider = new Slider(obj);
+          prop.renderHtml();
+          slider.render();
+        }
+        addSliderListeners();
+      })
   }
 }
 
