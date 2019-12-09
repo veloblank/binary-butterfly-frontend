@@ -21,21 +21,22 @@ const fetchCreateUser = (e) => {
     .then(data => {
       if (!data.message) {
         closeModal();
+        fetchUserPicks(data)
       } else {
         fetchErrorHandler(data)
       }
     })
 }
 
-const fetchUserPicks = () => {
-  let user_id = this.state.user_id;
-  return fetch(`http://localhost:3050/api/v1/user_picks?user_id=${user_id}`)
+const fetchUserPicks = (data) => {
+  let user_id = data.id
+  return fetch(`http://localhost:3000/api/v1/user_picks?user_id=${user_id}`)
     .then(response => response.json())
     .then(json => console.log(json));
 };
 
 const createUserPicks = () => {
-  return fetch("http://localhost:3050/api/v1/user_picks", {
+  return fetch("http://localhost:3000/api/v1/user_picks", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -52,31 +53,8 @@ const createUserPicks = () => {
     .then(json => console.log(json));
 };
 
-const handleLogin = () => {
-  let formData = {
-    username: "veloblank",
-    email: "veloblank@gmail.com"
-  };
-
-  let configObj = {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      "Accept": "application/json"
-    },
-    body: JSON.stringify(formData)
-  };
-
-  fetch("http://localhost:3050/api/v1/login", configObj)
-    .then(response => response.json())
-    .then(json => {
-      console.log(json);
-    });
-};
-
 export {
   fetchCreateUser,
   fetchUserPicks,
   createUserPicks,
-  handleLogin
 };
