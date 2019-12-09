@@ -16,23 +16,10 @@ class App {
   }
 
   loggedIn() {
-    if (this.state.user) {
-    }
     return this.state.user ? true : false;
   }
 
   addEventListeners() {
-    let radioButtons = document.querySelectorAll('input[type=radio][name="nav-toggle"]');
-    radioButtons = [...radioButtons];
-    radioButtons.forEach(button => button.addEventListener('click', () => {
-      let views = document.querySelectorAll(".views");
-      let view = document.getElementById(button.value);
-      views.forEach(div => {
-        div.style.display = "none";
-        view.style.display = "block";
-      });
-    }));
-
     document
       .getElementById("open-signin-account-modal")
       .addEventListener("click", e => {
