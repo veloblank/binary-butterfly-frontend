@@ -1,8 +1,10 @@
-const fetchCreateUser = () => {
-  let submittedForm = document.getElementById("create-account-form");
+import fetchErrorHandler from './errorHandler.js';
+import { closeModal } from './listeners/modalListeners.js'
+
+const fetchCreateUser = (e) => {
   let formData = {
-    email: submittedForm.elements[0].value,
-    username: submittedForm.elements[1].value
+    email: e.target[0].value,
+    username: e.target[1].value
   };
 
   let configObj = {
@@ -14,29 +16,16 @@ const fetchCreateUser = () => {
     body: JSON.stringify(formData)
   };
 
-  fetch("http://localhost:3050/api/v1/users", configObj)
+  fetch("http://localhost:3000/api/v1/users", configObj)
     .then(response => response.json())
     .then(data => {
-      if (data.message.errors) {
-        let parent = document.createElement("ul");
-        let li = "";
-        data.message.errors.forEach(error => {
-          document.getElementById("account-errors").innerHTML = "";
-          li += `<li>${error}</li>`;
-          parent.innerHTML = li;
-          return document.getElementById("account-errors").append(parent);
-        });
+      if (!data.message) {
+        closeModal();
       } else {
-        console.log("You have successfully created an account and logged in!");
-        //   return (document.getElementById("create-account-modal").style.display =
-        //     "none");
-        // }
+        fetchErrorHandler(data)
       }
     })
-    .catch(error => {
-      console.log("Looks like there was a problem: \n", error);
-    });
-};
+}
 
 const fetchUserPicks = () => {
   let user_id = this.state.user_id;
