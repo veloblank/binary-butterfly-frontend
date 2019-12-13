@@ -22,6 +22,10 @@ class App {
       this.state.user_id = data.id;
       this.state.user = data.username;
       this.userLoggedIn = true;
+      //TODO:
+      document.getElementsByClassName('user-display').classList.remove('logged-out');
+      document.getElementsByClassName('user-display').classList.add('logged-in');
+      document.getElementById('account-user').innerText = this.state.user;
     }
     return this.state.user ? true : false;
   }
