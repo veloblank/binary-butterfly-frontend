@@ -1,110 +1,133 @@
 <!DOCTYPE html>
 <html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		<link rel="stylesheet" href="./styles/style.css" />
+		<title>Binary Butterfly App</title>
+	</head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-  <link rel="stylesheet" href="./styles/style.css" />
-  <title>Binary Butterfly App</title>
-</head>
+	<body>
+		<div class="container">
+			<nav class="nav" id="js-nav" data-view="daily-picks">
+				<form action="">
+					<input
+						class="toggle-radio "
+						type="radio"
+						name="nav-toggle"
+						value="daily-picks"
+						id="nav-user-picks"
+						checked
+					/>
+					<label class="nav-toggle-label " for="nav-user-picks">
+						Your Picks
+					</label>
+					<input
+						class="toggle-radio"
+						type="radio"
+						name="nav-toggle"
+						value="user-results"
+						id="nav-user-results"
+					/>
+					<label class="nav-toggle-label " for="nav-user-results">
+						Your results
+					</label>
+					<input
+						class="toggle-radio "
+						type="radio"
+						name="nav-toggle"
+						value="leaderboards"
+						id="nav-user-leaderboard"
+					/>
+					<label class="nav-toggle-label" for="nav-user-leaderboard">
+						Leaderboards
+					</label>
+				</form>
+			</nav>
+			<header class="week-description">
+				<h2 id="week-number">Week 11</h2>
+			</header>
+			<div
+				class="container"
+				id="contest-instructions"
+				style="background-color: black;"
+			>
+				<p id="instructions">
+					Fancy yourself a sports prognosticator? Put your skills to the test
+					and compete alongside other sports fans for bragging rights! Use the
+					slider for each prop to rate your confidence on your pick, but be
+					careful--extreme overconfidence is penalized in this game!
+				</p>
+				<div class="account-buttons" id="account-buttons-group">
+					<div class="account-buttons">
+						<button class="account-button" id="open-signin-account-modal">
+							Sign in to Play!
+						</button>
+						<button class="account-button" id="signout-button">
+							Log Out
+						</button>
+					</div>
+				</div>
+			</div>
+			<div
+				class="views view-is-active"
+				id="daily-picks"
+				style="visibility: visible;"
+			>
+				<div id="picks"></div>
+			</div>
+			<div class="views" id="user-results" style="display:none;">
+				User Results
+			</div>
+			<div class="views" id="leaderboards" style="display:none;">
+				Leaderboards
+			</div>
+		</div>
 
-<body>
-  <div class="container">
-    <nav class="nav" id="js-nav" data-view="daily-picks">
-      <form action="">
-        <input class="toggle-radio " type="radio" name="nav-toggle" value="daily-picks" id="nav-user-picks" checked />
-        <label class="nav-toggle-label " for="nav-user-picks">
-          Your Picks
-        </label>
-        <input class="toggle-radio" type="radio" name="nav-toggle" value="user-results" id="nav-user-results" />
-        <label class="nav-toggle-label " for="nav-user-results">
-          Your results
-        </label>
-        <input class="toggle-radio " type="radio" name="nav-toggle" value="leaderboards" id="nav-user-leaderboard" />
-        <label class="nav-toggle-label" for="nav-user-leaderboard">
-          Leaderboards
-        </label>
-      </form>
-    </nav>
-    <header class="week-description">
-      <h2 id="week-number">Week 11</h2>
-    </header>
-    <div class="container" id="contest-instructions" style="background-color: black;">
-      <p id="instructions">
-        Fancy yourself a sports prognosticator?! Put your skills to the test
-        and compete alongside others for Top Dog status! Use the sliders to
-        rate your confidence on your pick, but be careful--extreme
-        overconfidence is penalized in this game!
-      </p>
-      <div class="account-buttons" id="account-buttons-group">
-        <div class="account-buttons">
-          <button class="account-button" id="open-signin-account-modal">
-            Sign in to Play!
-          </button>
-          <button class="account-button" id="signout-button">
-            Log Out
-          </button>
-        </div>
-        <div class="user-display logged-out">
-          <p id="account-user"></p>
-        </div>
-      </div>
-    </div>
-    <div class="views view-is-active" id="daily-picks" style="visibility: visible;">
-      <div id="picks"></div>
-    </div>
-    <div class="views" id="user-results" style="display:none;">
-      User Results
-    </div>
-    <div class="views" id="leaderboards" style="display:none;">
-      Leaderboards
-    </div>
-  </div>
+		<div class="summary-container">
+			<div class="summary-group" id="remaining-picks">
+				<h3 class="total-picks-made">
+					<span id="daily-total-picks-made"></span> <span id="helper">of </span
+					><span id="daily-total-picks">0</span>
+					picks made
+				</h3>
+			</div>
 
-  <div class="summary-container">
-    <div class="summary-group" id="remaining-picks">
-      <h3 class="total-picks-made">
-        <span id="daily-total-picks-made"></span> <span id="helper">of </span><span id="daily-total-picks">0</span>
-        picks made
-      </h3>
-    </div>
+			<div class="summary-group" id="user-score">
+				<div id="user-prior-week-points">
+					Your Week 10 points: <span>-55.0</span> points
+				</div>
+				<div id="user-total-points">
+					Your Total Points: <span id="js-total-points">235</span> points
+				</div>
+			</div>
+		</div>
 
-    <div class="summary-group" id="user-score">
-      <div id="user-prior-week-points">
-        Your Week 10 points: <span>-55.0</span> points
-      </div>
-      <div id="user-total-points">
-        Your Total Points: <span id="js-total-points">235</span> points
-      </div>
-    </div>
-  </div>
+		<div class="modal-container" id="signin-account-modal">
+			<div class="modal-content">
+				<span class="modal-close-btn" id="signin-modal-close-btn">&times;</span>
+				<div class="google-signin" style="text-align: center">
+					<img src="./images/google-icon.svg" alt="" />
+					<p><a href="#">Create Account with Google</a></p>
+					<div class="form">
+						<form id="signin-account-form">
+							<label for="email">Email</label><br />
+							<input type="email" name="email" autofocus="true" /><br />
 
-  <div class="modal-container" id="signin-account-modal">
-    <div class="modal-content">
-      <span class="modal-close-btn" id="signin-modal-close-btn">&times;</span>
-      <div class="google-signin" style="text-align: center">
-        <img src="./images/google-icon.svg" alt="" />
-        <p><a href="#">Create Account with Google</a></p>
-        <div class="form">
-          <form id="signin-account-form">
-            <label for="email">Email</label><br />
-            <input type="email" name="email" autofocus="true" /><br />
+							<label for="username">Username</label><br />
+							<input type="text" name="username" /><br />
 
-            <label for="username">Username</label><br />
-            <input type="text" name="username" /><br />
+							<div class="errors-container">
+								<div class="error-field" id="account-errors"></div>
+								<input id="signin-account-btn" type="submit" value="Sign In" />
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
 
-            <div class="errors-container">
-              <div class="error-field" id="account-errors"></div>
-              <input id="signin-account-btn" type="submit" value="Sign In" />
-            </div>
-          </form>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <script src="src/index.js" type="module"></script>
-</body>
-
+		<script src="src/index.js" type="module"></script>
+	</body>
 </html>
