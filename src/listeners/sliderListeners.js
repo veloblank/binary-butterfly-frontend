@@ -1,4 +1,5 @@
 import { displayPoints } from '../mathFuncs.js'
+import { changeUserPicks } from '../fetchRequests.js'
 
 function addSliderListeners() {
   let sliders = document.getElementsByClassName("slider");
@@ -21,9 +22,9 @@ function addSliderListeners() {
       }
     })
 
-    slider.addEventListener("mouseup", () => {
+    slider.addEventListener("mouseup", e => {
       displayPoints();
-      //TODO: Make patch req to server that shows the user has made this pick
+      changeUserPicks();
     });
   };
 
