@@ -1,8 +1,6 @@
 import SportsProp from '../src/SportsProp.js';
 import Slider from '../src/Slider.js';
-import {
-  addSliderListeners
-} from '../src/listeners/sliderListeners.js';
+import { addSliderListeners } from '../src/listeners/sliderListeners.js';
 
 
 class SportsPropsAdapter {
@@ -11,7 +9,7 @@ class SportsPropsAdapter {
     this.sportsProps = [];
   }
 
-  async getCurrentProps(props) {
+  async getCurrentProps() {
     await fetch(this.baseUrl)
       .then(response => response.json())
       .then(data => {
