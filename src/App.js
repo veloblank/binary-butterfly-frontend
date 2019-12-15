@@ -1,4 +1,5 @@
 import SportsPropBuilder from './SportsPropBuilder.js';
+import * as eventHandler from './eventHandlers.js'
 import * as fetchRequests from './fetchRequests.js'
 
 class App {
@@ -6,7 +7,6 @@ class App {
     this.state = {
       sportsProps: [],
       user_id: '',
-      user: null,
       date: new Date(),
     };
 
@@ -15,16 +15,10 @@ class App {
     this.addEventListeners();
   }
 
-  // loggedIn() {
-  //   console.log("Checking login")
-  //   document.getElementsByClassName('user-display').classList.remove('logged-out');
-  //   document.getElementsByClassName('user-display').classList.add('logged-in');
-  //   document.getElementById('account-user').innerText = this.state.user;
-  // }
   addEventListeners() {
     document
       .getElementById("open-signin-account-modal")
-      .addEventListener("click", e => {
+      .addEventListener("click", () => {
         let modal = document.getElementById("signin-account-modal");
         modal.style.display = "block";
       });
@@ -42,7 +36,7 @@ class App {
       .getElementById('signin-account-form')
       .addEventListener("submit", e => {
         e.preventDefault();
-        fetchRequests.fetchCreateUser(e);
+        fetchRequests.fetchUser(e);
         //alert("You are signed in!")
       });
 
@@ -55,6 +49,21 @@ class App {
       }
     });
 
+    let signOutBtn = document.getElementById('signout-button');
+    let signInBtn = document.getElementById('open-signin-account-modal');
+    signOutBtn.addEventListener('click', e => {
+      e.preventDefault();
+      eventHandler.onSignOutClick(this);
+
+      if (this.state.user_id) {
+        signOutBtn.style.display = "block";
+        signInBtn.style.display = "none";
+
+      } else {
+        signOutBtn.style.display = "none";
+        signInBtn.style.display = "inline";
+      }
+    });
   }
 }
 

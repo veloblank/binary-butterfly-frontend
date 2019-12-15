@@ -1,7 +1,7 @@
 import fetchErrorHandler from './errorHandler.js';
 import { closeModal } from './listeners/modalListeners.js'
 
-const fetchCreateUser = async e => {
+const fetchUser = e => {
   let formData = {
     email: e.target[0].value,
     username: e.target[1].value
@@ -16,7 +16,7 @@ const fetchCreateUser = async e => {
     body: JSON.stringify(formData)
   };
 
-  await fetch("http://localhost:3000/api/v1/users", configObj)
+  fetch("http://localhost:3000/api/v1/users", configObj)
     .then(response => response.json())
     .then(data => {
       if (!data.message) {
@@ -87,7 +87,7 @@ const changeUserPicks = async (e) => {
 };
 
 export {
-  fetchCreateUser,
+  fetchUser,
   fetchUserPicks,
   createUserPicks,
   changeUserPicks

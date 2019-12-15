@@ -9,8 +9,7 @@ const onCreateActClick = () => {
 };
 
 const onSignOutClick = (app) => {
-  //TODO: Need to build this to empty app.state
-  //console.log(app.state.user);
+  app.state.user_id = '';
 };
 
 export {
